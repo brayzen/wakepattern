@@ -1,5 +1,9 @@
 # Wake Pattern
 
+Leave anonymous feedback
+Gather feedback from the people around you
+Learn how to be a more likable individual \*anonymously
+
 #### Ruby version: 2.3.1
 
 <!-- #### System dependencies
