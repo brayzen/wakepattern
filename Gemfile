@@ -10,10 +10,12 @@ gem 'sqlite3'
 gem 'puma', '~> 3.7'
 gem 'jquery-rails', '~> 4.3.1'
 gem 'sass-rails', '~> 5.0'
+gem 'slim-rails', '~> 3.1.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
+gem 'devise'
 
 group :development, :test do
   gem 'pry-byebug'
