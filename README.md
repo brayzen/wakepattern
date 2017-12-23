@@ -1,24 +1,20 @@
-# README
+# Wake Pattern
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### Ruby version: 2.3.1
 
-Things you may want to cover:
+<!-- #### System dependencies
 
-* Ruby version
+#### Configuration -->
 
-* System dependencies
+#### Database creation
+rake db:create
+rake db:migrate
 
-* Configuration
+<!-- #### Database initialization
 
-* Database creation
+#### How to run the test suite
 
-* Database initialization
+#### Services (job queues, cache servers, search engines, etc.)
 
-* How to run the test suite
+#### Deployment instructions -->
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
