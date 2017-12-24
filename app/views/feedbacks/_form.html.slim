@@ -1,0 +1,15 @@
+= form_for @feedback do |f|
+  - if @feedback.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@feedback.errors.count, "error")} prohibited this feedback from being saved:"
+      ul
+        - @feedback.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :text
+    = f.text_area :text
+  .field
+    = f.label :userRated
+    = f.number_field :userRated
+  .actions = f.submit
