@@ -21,3 +21,14 @@
 /yarn-error.log
 
 .byebug_history
+
+**/*.swp
+**/*.swn
+**/*.swo
+**/*.swm
+**/*.swl
+
+
+
+
+
