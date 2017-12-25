@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   def self.create_from_omniauth(params)
     attributes = {
+      name: params['info']['name'],
       email: params['info']['email'],
       password: Devise.friendly_token
     }
