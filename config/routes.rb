@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
   root 'static#home'
-	resources :feedback
+	resources :feedbacks
+	get 'givefeedback', to: 'feedbacks#give_feedback'
 end
