@@ -8,7 +8,7 @@ class FeedbacksController < ApplicationController
   end
 
 	def give_feedback
-		render :fb_form 
+		render :fb_form
 	end
 
   # GET /feedbacks/1

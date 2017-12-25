@@ -1,0 +1,105 @@
+//fb_form.html.slim
+
+
+link href="style.css" rel='stylesheet' type='text/css'	
+script src="javascripts/feedbackCompiler.js")
+script(src="./javascripts/fb_form.js")
+  
+form#form.fb-form
+ .fb-to-names.fb-comp
+   .form-header
+     .form-head-e.spacer
+     .form-head-e.title Let them know:
+     .form-head-e.close-out 
+       #circle
+         div &#x2573
+
+
+   input#button-fakeData(type="button" value="FakeData")
+   br
+   
+   input#first-name(name="firstName" placeholder="First Name")
+   input#last-name(name="lastName" placeholder="Last Name")
+
+ .fb-email.fb-comp
+   input#email(name="email" placeholder="Email Address" min="200")
+
+ .fb-ratings.fb-comp
+   .rating-inner-box
+     .fb-star-ratings-1.fb-comp
+       label(for="rating-likable") Likable:  
+       // Stars Thanks to Brian Knapp https://codepen.io/brianknapp/pen/JEotD/
+     .fb-star-ratings-2.fb-comp
+       .stars(name="rating-likable" data-stars="0")
+         svg(height="25" width="23" class="star rating" data-rating="1")
+           polygon(points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;")
+         svg(height="25" width="23" class="star rating" data-rating="2")
+           polygon(points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;")
+         svg(height="25" width="23" class="star rating" data-rating="3")
+           polygon(points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;")
+         svg(height="25" width="23" class="star rating" data-rating="4")
+           polygon(points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;")
+         svg(height="25" width="23" class="star rating" data-rating="5")
+           polygon(points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;")
+       br
+
+     .fb-star-ratings-1.fb-comp
+       label(for="rating-communication") communication:
+       // Stars Thanks to Brian Knapp https://codepen.io/brianknapp/pen/JEotD/
+     .fb-star-ratings-2.fb-comp
+       .stars(name="rating-communication" data-stars="0")
+         svg(height="25" width="23" class="star rating" data-rating="1")
+           polygon(points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;")
+         svg(height="25" width="23" class="star rating" data-rating="2")
+           polygon(points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;")
+         svg(height="25" width="23" class="star rating" data-rating="3")
+           polygon(points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;")
+         svg(height="25" width="23" class="star rating" data-rating="4")
+           polygon(points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;")
+         svg(height="25" width="23" class="star rating" data-rating="5")
+           polygon(points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;")
+       br
+
+     .fb-star-ratings-1.fb-comp
+       label(for="rating-helpful") helpful:  
+       // Stars Thanks to Brian Knapp https://codepen.io/brianknapp/pen/JEotD/
+     .fb-star-ratings-2.fb-comp
+       .stars(name="rating-helpful" data-stars="0")
+         svg(height="25" width="23" class="star rating" data-rating="1")
+           polygon(points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;")
+         svg(height="25" width="23" class="star rating" data-rating="2")
+           polygon(points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;")
+         svg(height="25" width="23" class="star rating" data-rating="3")
+           polygon(points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;")
+         svg(height="25" width="23" class="star rating" data-rating="4")
+           polygon(points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;")
+         svg(height="25" width="23" class="star rating" data-rating="5")
+           polygon(points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;")
+       br
+
+ .fb-being.fb-comp
+   label(for="being") How were they being?:
+   select#being-select.fb-select-box(name="being")
+
+   .being-box
+
+ .fb-message.fb-comp
+   label(for="message") What do you want to say?: 
+   br
+   textarea#message(name="message" placeholder="Tell them what they need to hear..." rows="22" )
+
+ .anonymous.fb-comp
+   input#testimony-button.testimony-display-1(name="anonymous-button" type="button" value="I want to include my name / Leave Testimony")
+   input#anonymous-button.testimony-display-2.hide(name="anonymous-button" type="button" value="Nevermind, I want to send Anonymously")
+   .testimony-names.fb-comp
+     input#from-first-name.testimony-display-2.hide(name="senderFirstName" placeholder="your First Name")
+     input#from-last-name.testimony-display-2.hide(name="senderLastName" placeholder="your Last Name")
+
+ .read-reciept.fb-comp
+   input#read-receipt(name="read-receipt" type="checkbox")
+   label(for="read-reciept") Read-Receipt?
+   
+ input#button-signin.hide(type="button" value="Sign In/Up")
+
+ input#button-submit(type="button" value="Send")
+
