@@ -5,7 +5,7 @@ class User < ApplicationRecord
       password: Devise.friendly_token
     }
 
-    create(attributes)
+    create attributes
   end
 
   has_many :authentications, class_name: 'UserAuthentication', dependent: :destroy
