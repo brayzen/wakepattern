@@ -7,6 +7,10 @@ class FeedbacksController < ApplicationController
     @feedbacks = Feedback.all
   end
 
+	def give_feedback
+		render :fb_form 
+	end
+
   # GET /feedbacks/1
   # GET /feedbacks/1.json
   def show
