@@ -1,9 +1,4 @@
 //fb_form.html.slim
-
-
-
-= stylesheet_link_tag "style"
-= javascript_include_tag "feedback_compiler", "fb_form"
   
 form#form.fb-form
  .fb-to-names.fb-comp
@@ -44,7 +39,7 @@ form#form.fb-form
        br
 
      .fb-star-ratings-1.fb-comp
-       label(for="rating-communication") communication:
+       label(for="rating-communication") Communication:
        // Stars Thanks to Brian Knapp https://codepen.io/brianknapp/pen/JEotD/
      .fb-star-ratings-2.fb-comp
        .stars(name="rating-communication" data-stars="0")
@@ -61,7 +56,7 @@ form#form.fb-form
        br
 
      .fb-star-ratings-1.fb-comp
-       label(for="rating-helpful") helpful:  
+       label(for="rating-helpful") Helpful:  
        // Stars Thanks to Brian Knapp https://codepen.io/brianknapp/pen/JEotD/
      .fb-star-ratings-2.fb-comp
        .stars(name="rating-helpful" data-stars="0")
