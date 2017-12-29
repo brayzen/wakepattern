@@ -1,9 +1,9 @@
 //fb_form.html.slim
 
 
-link href="style.css" rel='stylesheet' type='text/css'	
-script src="javascripts/feedbackCompiler.js")
-script(src="./javascripts/fb_form.js")
+
+= stylesheet_link_tag "style"
+= javascript_include_tag "feedback_compiler", "fb_form"
   
 form#form.fb-form
  .fb-to-names.fb-comp
