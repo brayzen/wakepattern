@@ -16,3 +16,4 @@
 //= require feedback_compiler
 //= require fb_form
 //= require_tree .
+//= require fb_form
