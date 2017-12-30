@@ -12,9 +12,5 @@ class CreateFeedbacks < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
-		
-		#add_reference :to, :user, foreign_key: true
-		#add_reference :from, :user, foreign_key: true
-		
   end
 end
