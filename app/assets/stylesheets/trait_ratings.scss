@@ -1,0 +1,71 @@
+@import 'variables';
+
+
+.traits {
+	display: inline-block;
+	list-style-type: none;
+	width: 100%;
+	border: 2px solid black;
+}
+
+
+.stars {
+  cursor: pointer;
+  
+	&:hover {
+    .star polygon {
+      fill: #ffd055 !important;
+    }
+  }
+  
+
+	.star {
+    float: left;
+
+    polygon {
+      fill: $background-star-color;
+    }
+
+    &:hover ~ .star {
+      polygon {
+        fill: $background-star-color !important;
+      }
+    }
+  }
+  
+  &[data-stars] {
+    .star polygon {
+      fill: $primary-color;
+    }
+  }
+  
+  &[data-stars="1"] {
+    .star:nth-child(1) ~ .star polygon {
+      fill: $background-star-color;
+    }
+  }
+  
+  &[data-stars="2"] {
+    .star:nth-child(2) ~ .star polygon {
+      fill: $background-star-color;
+    }
+  }
+  
+  &[data-stars="3"] {
+    .star:nth-child(3) ~ .star polygon {
+      fill: $background-star-color;
+    }
+  }
+  
+  &[data-stars="4"] {
+    .star:nth-child(4) ~ .star polygon {
+      fill: $background-star-color;
+    }
+  }
+  
+  &[data-stars="5"] {
+    .star:nth-child(5) ~ .star polygon {
+      fill: $background-star-color;
+    }
+  }
+}
