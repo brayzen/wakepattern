@@ -18,9 +18,10 @@
   .field
     = f.label :to_last_name
     = f.text_field :to_last_name
-    ul.trait-list
-      = @traits.each do |t|
-         li = t.name
+  .field 
+    = render "layouts/trait_ratings"
+    
+         
   .actions = f.submit
     
      
