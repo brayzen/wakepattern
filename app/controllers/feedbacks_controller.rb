@@ -9,7 +9,7 @@ class FeedbacksController < ApplicationController
   end
 
 	def give_feedback
-		render :fb_formd
+		render :fb_form
 	end
 
   # GET /feedbacks/1
@@ -20,6 +20,7 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks/new
   def new
     @feedback = Feedback.new
+		@traits = Trait.all.select { |t| t.order }
   end
 
   # GET /feedbacks/1/edit
