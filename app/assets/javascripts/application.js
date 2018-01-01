@@ -15,5 +15,5 @@
 //= require turbolinks
 //= require feedback_compiler
 //= require fb_form
+//= require ratings
 //= require_tree .
-//= require fb_form
