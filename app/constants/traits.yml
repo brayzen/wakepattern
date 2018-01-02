@@ -1,0 +1,14 @@
+- name: helpful
+  subtraits:
+    - name: dependable
+    - name: productive
+- name: communication
+  subtraits:
+    - name: listening
+    - name: speech
+    - name: understanding
+- name: charisma
+  subtraits:
+    - name: friendliness
+    - name: composure
+    - name: complainer

@@ -1,0 +1,9 @@
+li.trait data-name=trait['name']
+  .name = trait['name'].capitalize
+  .rating_stars
+    = render partial: 'feedbacks/star', collection: Array.new(5).fill('star')
+
+- if trait['subtraits']
+  ul.subtraits
+    = render partial: 'feedbacks/trait', collection: trait['subtraits'], as: :trait
+

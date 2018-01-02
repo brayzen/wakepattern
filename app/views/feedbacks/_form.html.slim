@@ -18,11 +18,11 @@
   .field
     = f.label :to_last_name
     = f.text_field :to_last_name
-  .field 
-    = render "layouts/trait_ratings"
-    
-         
+  ul.traits
+    = render partial: "feedbacks/trait", collection: @TRAITS, as: :trait
+
+
   .actions = f.submit
-    
-     
-    
+
+
+
