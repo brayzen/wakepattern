@@ -1,2 +1,11 @@
-h1 Wake Pattern Home Page
-== render 'feedbacks/form'
+
+== render 'layouts/header'
+
+//reverse order for the form to be at the top
+.hero
+  .fb-container-box
+    == render 'feedbacks/form'
+  .hero-text-box
+    h1 Give feedback, make an impact.
+    h1 Get data, be empowered.
+    h1 Discover patterns to transform your life

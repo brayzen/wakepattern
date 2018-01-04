@@ -1,0 +1,10 @@
+  #header
+    nav
+      ul.header-bar
+        li#logo.nav-link.logo Wake Pattern
+        li#filler.nav-spacer
+        li#mission.nav-link Mission
+        li#about.nav-link About
+        li = link_to "About"
+        li = link_to "Log in", new_user_session_path, :id=>"login", :class=>"nav-link"
+        
