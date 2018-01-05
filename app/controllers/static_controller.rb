@@ -8,4 +8,7 @@ class StaticController < ApplicationController
 
 	def about
 	end
+	
+	def mission
+	end
 end

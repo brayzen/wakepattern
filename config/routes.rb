@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   resources :feedbacks
   get 'givefeedback', to: 'feedbacks#new'
 	get 'about', to: 'static#about'
+	get 'mission', to: 'static#mission'
   root 'static#home'
 end
+
