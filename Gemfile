@@ -19,6 +19,7 @@ gem 'devise'
 gem 'domp'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'nokogiri'
 
 group :development, :test do
   gem 'pry-byebug'
