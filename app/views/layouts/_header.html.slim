@@ -1,7 +1,7 @@
   #header
     nav
       ul.header-bar
-        li#logo.nav-link.logo Wake Pattern
+        li = link_to "Wake Pattern", root_path, :id=>"logo", :class=>"nav-link logo"
         li#filler.nav-spacer
         li = link_to "Mission", mission_path, :id=>"mission", :class=>"nav-link"
         li = link_to "About", about_path, :id=>"about", :class=>"nav-link"

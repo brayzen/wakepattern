@@ -7,9 +7,6 @@
           li = message
 
   .field
-    = f.label :message
-    = f.text_area :message
-  .field
     = f.label :to_email
     = f.text_field :to_email
   .field
@@ -20,7 +17,9 @@
     = f.text_field :to_last_name
   ul.traits
     = render partial: "feedbacks/trait", collection: @TRAITS, as: :trait
-
+  .field
+    = f.label :message
+    = f.text_area :message
 
   .actions = f.submit
 
