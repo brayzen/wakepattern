@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'givefeedback', to: 'feedbacks#new'
 	get 'about', to: 'static#about'
 	get 'mission', to: 'static#mission'
+	get 'mailer', to: 'static#mail_it'
   root 'static#home'
 end
 
