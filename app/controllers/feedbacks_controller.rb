@@ -8,10 +8,6 @@ class FeedbacksController < ApplicationController
     @feedbacks = Feedback.all
   end
 
-	def give_feedback
-		render :fb_formd
-	end
-
   # GET /feedbacks/1
   # GET /feedbacks/1.json
   def show
@@ -20,6 +16,7 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks/new
   def new
     @feedback = Feedback.new
+		@traits = Trait.all.select { |t| t.order }
   end
 
   # GET /feedbacks/1/edit
@@ -32,7 +29,7 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new feedback_params
     @feedback.sender = current_or_guest_user
     receiver = User.find_or_create_by(email: feedback_params[:to_email])
-    
+
     receiver.save! validate: false unless receiver.persisted?
 		@feedback.reciever = receiver
     respond_to do |format|

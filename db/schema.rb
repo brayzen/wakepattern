@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171230022635) do
+ActiveRecord::Schema.define(version: 20180102054444) do
 
   create_table "authentication_providers", force: :cascade do |t|
     t.string "name"
@@ -34,6 +34,12 @@ ActiveRecord::Schema.define(version: 20171230022635) do
     t.integer "receiver_id"
     t.index ["receiver_id"], name: "index_feedbacks_on_receiver_id"
     t.index ["sender_id"], name: "index_feedbacks_on_sender_id"
+  end
+
+  create_table "traits", force: :cascade do |t|
+    t.string "name"
+    t.integer "rating"
+    t.index [nil], name: "index_traits_on_feedback_id"
   end
 
   create_table "user_authentications", force: :cascade do |t|

@@ -1,0 +1,33 @@
+@import 'variables';
+
+.trait {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 18rem;
+
+  .name {
+    font-size: 1rem;
+    max-width: 50%;
+  }
+
+  .right { max-width: 50%; }
+}
+
+.subtraits{
+  margin-bottom: 1rem;
+}
+
+.rating_stars {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+
+	.star {
+    polygon{ fill: black; }
+
+    &.hover, &.selected{
+      polygon{ fill: #ffd055; }
+    }
+  }
+}

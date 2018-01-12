@@ -37,10 +37,6 @@ $(function(){
 	var fb = new FeedbackCompiler()	
 
 
-	// Stars Thanks to Brian Knapp https://codepen.io/brianknapp/pen/JEotD/
-	$('.star.rating').click(function(){
-		$(this).parent().attr('data-stars', $(this).data('rating'));
-	});
 
 ///////////////////////////////////////////////f
 ///////////////////////////////////////////////f

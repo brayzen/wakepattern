@@ -10,9 +10,6 @@
     = f.label :message
     = f.text_area :message
   .field
-    = f.label :user_rating
-    = f.text_field :user_rating 
-  .field
     = f.label :to_email
     = f.text_field :to_email
   .field
@@ -21,4 +18,11 @@
   .field
     = f.label :to_last_name
     = f.text_field :to_last_name
+  ul.traits
+    = render partial: "feedbacks/trait", collection: @TRAITS, as: :trait
+
+
   .actions = f.submit
+
+
+

@@ -1,11 +1,4 @@
-
-$background-star-color: #c3c3c3;
-$primary-font: 'assistant', 'aauxprolight', sans-serif;
-$secondary-font: 'Helvetica';
-
-$secondary-color: rgba(200, 0, 100, 0.4);
-$primary-color: #00ffff;
-$bg-header-color: #CCD;
+@import 'variables';
 
 html {
 	font-size: 100%;
@@ -143,24 +136,6 @@ html {
 	min-width: 100px;
 }
 
-.fb-ratings{
-	padding: .5em 1em;
-	text-align: left;			
-	padding: auto;
-	
-	.rating-inner-box {
-		display: flex;
-		flex-flow: row wrap;
-		justify-content: center;
-
-		.fb-star-ratings-1,	.fb-star-ratings-2{ 
-			margin: .3em auto;
-			display: inline-block;
-			width: 8rem;
-			max-height: 1.5em;
-		}
-	}
-}
 
 	
 .hide {
@@ -172,66 +147,6 @@ html {
 }
 
 
-.stars {
-  cursor: pointer;
-  
-	&:hover {
-    .star polygon {
-      fill: #ffd055 !important;
-    }
-  }
-  
-
-	.star {
-    float: left;
-
-    polygon {
-      fill: $background-star-color
-    }
-
-    &:hover ~ .star {
-      polygon {
-        fill: $background-star-color !important;
-      }
-    }
-  }
-  
-  &[data-stars] {
-    .star polygon {
-      fill: $primary-color;
-    }
-  }
-  
-  &[data-stars="1"] {
-    .star:nth-child(1) ~ .star polygon {
-      fill: $background-star-color;
-    }
-  }
-  
-  &[data-stars="2"] {
-    .star:nth-child(2) ~ .star polygon {
-      fill: $background-star-color;
-    }
-  }
-  
-  &[data-stars="3"] {
-    .star:nth-child(3) ~ .star polygon {
-      fill: $background-star-color;
-    }
-  }
-  
-  &[data-stars="4"] {
-    .star:nth-child(4) ~ .star polygon {
-      fill: $background-star-color;
-    }
-  }
-  
-  &[data-stars="5"] {
-    .star:nth-child(5) ~ .star polygon {
-      fill: $background-star-color;
-    }
-  }
-}
 
 #message {
 	width: 90%;

@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  include ApplicationHelper
+  before_action :load_traits_list
+
   # if user is logged in, return current_user, else return guest_user
   def current_or_guest_user
     return guest_user unless current_user
