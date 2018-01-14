@@ -1,5 +1,6 @@
 class FeedbackMailer < ApplicationMailer
-	default from: 'messenger@wakepattern.com'
+	#default from: 'messenger@wakepattern.com'
+	default from: 'bray213@gmail.com'
 	
 	def notice_email(to_user, expiration_code)
 		@user = to_user
