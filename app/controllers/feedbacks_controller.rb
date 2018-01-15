@@ -2,29 +2,20 @@ class FeedbacksController < ApplicationController
   before_action :authenticate_user!, except: [:new, :create]
   before_action :set_feedback, only: [:show, :edit, :update, :destroy]
 
-  # GET /feedbacks
-  # GET /feedbacks.json
   def index
     @feedbacks = Feedback.all
   end
 
-  # GET /feedbacks/1
-  # GET /feedbacks/1.json
   def show
   end
 
-  # GET /feedbacks/new
   def new
     @feedback = Feedback.new
-		@traits = Trait.all.select { |t| t.order }
   end
 
-  # GET /feedbacks/1/edit
   def edit
   end
 
-  # POST /feedbacks
-  # POST /feedbacks.json
   def create
     @feedback = Feedback.new feedback_params
     @feedback.sender = current_or_guest_user
