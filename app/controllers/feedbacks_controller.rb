@@ -34,8 +34,6 @@ class FeedbacksController < ApplicationController
     end
   end
 
-  # PATCH/PUT /feedbacks/1
-  # PATCH/PUT /feedbacks/1.json
   def update
     respond_to do |format|
       if @feedback.update(feedback_params)
@@ -48,8 +46,6 @@ class FeedbacksController < ApplicationController
     end
   end
 
-  # DELETE /feedbacks/1
-  # DELETE /feedbacks/1.json
   def destroy
     @feedback.destroy
     respond_to do |format|
@@ -59,12 +55,10 @@ class FeedbacksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_feedback
       @feedback = Feedback.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def feedback_params
       params.require(:feedback).permit(:message, :to_email, :to_first_name, :to_last_name, feedback_traits_attributes: [:name, :rating])
     end
