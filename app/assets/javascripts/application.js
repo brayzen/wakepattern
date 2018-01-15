@@ -10,10 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery 
+//= require jquery
 //= require rails-ujs
-//= require turbolinks
-//= require feedback_compiler
-//= require fb_form
+// require turbolinks
 //= require ratings
 //= require_tree .
