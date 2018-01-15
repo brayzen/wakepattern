@@ -1,0 +1,14 @@
+.feedback_form{
+  .name{
+    display: flex;
+  }
+
+  textarea.message{
+    min-width: 200px;
+    min-height: 100px;
+  }
+
+  input[type="text"]{
+    margin-bottom: 15px;
+  }
+}

@@ -15,7 +15,7 @@
  *= require header
  *= require fb-form
  *= require trait_ratings
- *= require feedbacks
+ *= require feedback
  *= require_tree .
  *= require_self
  */
