@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 20180102054444) do
     t.index ["name"], name: "index_name_on_authentication_providers"
   end
 
+  create_table "feedback_trait", id: false, force: :cascade do |t|
+    t.integer "feedback_id", null: false
+    t.integer "trait_id", null: false
+    t.integer "rating", limit: 10
+    t.text "direct_feedback"
+    t.index ["feedback_id", "trait_id"], name: "index_feedback_trait_on_feedback_id_and_trait_id"
+    t.index ["trait_id", "feedback_id"], name: "index_feedback_trait_on_trait_id_and_feedback_id"
+  end
+
   create_table "feedback_traits", force: :cascade do |t|
     t.integer "feedback_id"
     t.string "name"

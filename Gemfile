@@ -16,9 +16,13 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'devise'
+gem 'bcrypt'
 gem 'domp'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'nokogiri'
+gem 'dotenv-rails'
+gem 'aws-sdk'
 
 group :development, :test do
   gem 'pry-byebug'

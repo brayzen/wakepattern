@@ -27,7 +27,21 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.perform_deliveries = true
+	config.x.mail_from = %(WakePattern <no-reply@wakepattern.com>)
+
+	config.action_mailer.default_url_options = { host: 'wakepattern.com'}
+
+	config.action_mailer.smtp_settings = {
+		address: 'email-smtp.us-east-1.amazonaws.com',
+		port: 587,
+		user_name: ENV["SMTP_USERNAME"],
+		password: ENV["SMTP_PASSWORD"],
+		authentication: :login,
+		enable_starttls_auto: true	
+	}
+
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
