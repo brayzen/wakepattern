@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 20180102054444) do
     t.index ["name"], name: "index_name_on_authentication_providers"
   end
 
+  create_table "feedback_traits", force: :cascade do |t|
+    t.integer "feedback_id"
+    t.string "name"
+    t.integer "rating"
+    t.index ["feedback_id"], name: "index_feedback_traits_on_feedback_id"
+  end
+
   create_table "feedbacks", force: :cascade do |t|
     t.text "message"
     t.integer "user_rating"
@@ -34,12 +41,6 @@ ActiveRecord::Schema.define(version: 20180102054444) do
     t.integer "receiver_id"
     t.index ["receiver_id"], name: "index_feedbacks_on_receiver_id"
     t.index ["sender_id"], name: "index_feedbacks_on_sender_id"
-  end
-
-  create_table "traits", force: :cascade do |t|
-    t.string "name"
-    t.integer "rating"
-    t.index [nil], name: "index_traits_on_feedback_id"
   end
 
   create_table "user_authentications", force: :cascade do |t|
