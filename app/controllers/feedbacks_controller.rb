@@ -22,7 +22,7 @@ class FeedbacksController < ApplicationController
     receiver = User.find_or_create_by(email: feedback_params[:to_email])
 
     receiver.save! validate: false unless receiver.persisted?
-		@feedback.reciever = receiver
+    @feedback.reciever = receiver
     respond_to do |format|
       if @feedback.save
         format.html { redirect_to root_path, notice: 'Feedback was successfully created.' }
@@ -66,6 +66,6 @@ class FeedbacksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def feedback_params
-      params.require(:feedback).permit(:message, :to_email, :to_first_name, :to_last_name)
+      params.require(:feedback).permit(:message, :to_email, :to_first_name, :to_last_name, feedback_traits_attributes: [:name, :rating])
     end
 end

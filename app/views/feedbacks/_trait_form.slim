@@ -7,5 +7,6 @@ li.trait[
   .rating_stars
     = render partial: 'feedbacks/star', collection: Array.new(5).fill('star')
 
-  = form.text_field :name, class: 'ratings_input'
+  = form.text_field :name, class: "input_name"
+  = form.text_field :rating, class: "input_rating"
 

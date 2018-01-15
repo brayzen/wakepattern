@@ -5,7 +5,7 @@ class Feedback < ApplicationRecord
 	belongs_to :sender, class_name: 'User', foreign_key: :sender_id
 	belongs_to :reciever, class_name: 'User', foreign_key: :receiver_id
   has_many :feedback_traits, inverse_of: :feedback, dependent: :destroy
-  accepts_nested_attributes_for :feedback_traits, allow_destroy: true
+  accepts_nested_attributes_for :feedback_traits, allow_destroy: true, reject_if: proc { |attributes| attributes['rating'].blank? }
 
   alias_method :active_feedback_traits, :feedback_traits
 
