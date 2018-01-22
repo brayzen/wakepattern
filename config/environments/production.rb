@@ -67,7 +67,7 @@ Rails.application.configure do
 	config.action_mailer.default_url_options = { host: 'wakepattern.com'}
 	config.action_mailer.smtp_settings = {
 		address: 'email-smtp.us-west-2.amazonaws.com',
-		user_name: ENV["SMTP_USERNAME"]
+		user_name: ENV["SMTP_USERNAME"],
 		password: ENV["SMTP_PASSWORD"]
 	}
 
