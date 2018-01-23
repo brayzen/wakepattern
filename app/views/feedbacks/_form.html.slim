@@ -21,7 +21,7 @@
   = f.text_area :message, class: 'message'
 
   ul.traits
-    - f.object.new_traits unless f.object.feedback_traits.any?
+    - f.object.all_traits
     = f.fields_for :feedback_traits do |trait_form|
       = render 'feedbacks/trait_form', form: trait_form
 

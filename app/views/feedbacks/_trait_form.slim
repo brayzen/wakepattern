@@ -1,12 +1,11 @@
-- trait_name = form.object.name
+- trait = form.object
 li.trait[
-  data-name = trait_name
-  data-indent = Feedback::TRAIT_HEIRARCHY[trait_name.to_sym]
+  data-name = trait.name
+  data-indent = trait.indent
 ]
-  .name = trait_name
+  .name = trait.name
   .rating_stars
     = render partial: 'feedbacks/star', collection: Array.new(5).fill('star')
 
-  = form.text_field :name, class: "input_name"
   = form.text_field :rating, class: "input_rating"
 

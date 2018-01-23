@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180102054444) do
+ActiveRecord::Schema.define(version: 20180120023942) do
 
   create_table "authentication_providers", force: :cascade do |t|
     t.string "name"
@@ -19,20 +19,12 @@ ActiveRecord::Schema.define(version: 20180102054444) do
     t.index ["name"], name: "index_name_on_authentication_providers"
   end
 
-  create_table "feedback_trait", id: false, force: :cascade do |t|
-    t.integer "feedback_id", null: false
-    t.integer "trait_id", null: false
-    t.integer "rating", limit: 10
-    t.text "direct_feedback"
-    t.index ["feedback_id", "trait_id"], name: "index_feedback_trait_on_feedback_id_and_trait_id"
-    t.index ["trait_id", "feedback_id"], name: "index_feedback_trait_on_trait_id_and_feedback_id"
-  end
-
   create_table "feedback_traits", force: :cascade do |t|
     t.integer "feedback_id"
-    t.string "name"
     t.integer "rating"
+    t.integer "trait_id"
     t.index ["feedback_id"], name: "index_feedback_traits_on_feedback_id"
+    t.index ["trait_id"], name: "index_feedback_traits_on_trait_id"
   end
 
   create_table "feedbacks", force: :cascade do |t|
@@ -50,6 +42,12 @@ ActiveRecord::Schema.define(version: 20180102054444) do
     t.integer "receiver_id"
     t.index ["receiver_id"], name: "index_feedbacks_on_receiver_id"
     t.index ["sender_id"], name: "index_feedbacks_on_sender_id"
+  end
+
+  create_table "traits", force: :cascade do |t|
+    t.string "name"
+    t.integer "order"
+    t.integer "indent"
   end
 
   create_table "user_authentications", force: :cascade do |t|
