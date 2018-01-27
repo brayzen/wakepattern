@@ -1,0 +1,28 @@
+@import 'variables';
+
+.intro_callout {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  background: url(image_path('home_bg')) no-repeat;
+  background-size: 100% auto;
+  padding: 2rem;
+  min-height: 50rem;
+
+	.intro, .feedback_callout {
+    padding: 2rem;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 2rem;
+  }
+
+  .intro{
+    background: rgba(255, 255, 255, .65);
+  }
+
+  .feedback_callout{
+    background: rgba(0, 0, 255, .65);
+    color: white;
+  }
+}
+

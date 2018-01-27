@@ -29,10 +29,7 @@
 **/*.swl
 **/*.swk
 
-
-
-
-
+.DS_Store
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*

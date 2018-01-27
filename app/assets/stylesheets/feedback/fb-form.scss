@@ -1,10 +1,5 @@
 @import 'variables';
 
-html {
-	font-size: 100%;
-	font-family: $primary-font;
-}
-	
 .error-box {
 	position: fixed;
 	width: 100%;
@@ -42,42 +37,42 @@ html {
 	border: 5px solid purple;
 }
 
-	
+
 .fb-comp{
-	margin: .4em auto;	
+	margin: .4em auto;
 }
 
 .form-header {
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: space-between;
-	align-items: center;	
-	
+	align-items: center;
+
 	.form-head-e {
 		&.spacer {
-			flex: 1 0 20%;		
+			flex: 1 0 20%;
 		}
-		
+
 		&.title {
-			flex: 2 0 40%;	
+			flex: 2 0 40%;
 		}
 
 		&.close-out {
-			flex: 1 0 20%;	
+			flex: 1 0 20%;
 		}
 	}
-}	
+}
 
-.fb-to-names { 
+.fb-to-names {
 	input {
 		border-radius: 3px;
 		border-style: ridge;
 		margin: 0 .3rem;
 	}
 }
-	 
+
 .fb-email{
-		
+
 	&input {
 		border-radius: 3px;
 		border-style: ridge;
@@ -113,22 +108,22 @@ html {
 		font-size: .8em;
 
 		&:hover {
-			background-color: red;	
+			background-color: red;
 			color: white;
 		}
 	}
-}		
+}
 
 #message {
-	padding: .5em;	
+	padding: .5em;
 	width: 98%;
 	max-height: 6em;
 }
 
 #button-signin {
 	font-size: 1.5em;
-	clear: both;	
-	width: 100px; 
+	clear: both;
+	width: 100px;
 }
 
 #button-submit {
@@ -137,13 +132,13 @@ html {
 }
 
 
-	
+
 .hide {
 	display: none;
 }
 
 .show {
-	display: unset;	
+	display: unset;
 }
 
 
@@ -159,7 +154,7 @@ html {
 	padding: 1rem;
 	width: 30%;
 	height: 100%;
-	position: relative; 
+	position: relative;
 	z-index: 3;
 	top: -.1rem;
 	border: 3px solid $primary-color;

@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title WakePattern
+    = csrf_meta_tags
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = content_for :stylesheets
+  body
+
+    = render 'static/header'
+    = yield
+    = render 'static/footer'
+

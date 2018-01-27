@@ -1,0 +1,10 @@
+h1{
+  font-size: 3.6rem;
+}
+
+a{
+  cursor: pointer;
+  text-decoration: none;
+
+  &:active, &:visited, &:hover{ color: inherit; }
+}
