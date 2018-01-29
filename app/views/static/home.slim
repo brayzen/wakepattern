@@ -1,15 +1,21 @@
 - content_for :stylesheets do
   = stylesheet_link_tag 'static/home'
 
-.intro_callout
+- content_for :javascripts do
+  = stylesheet_link_tag 'static/home'
+
+.intro_container
+  .logo Wake Pattern
   .intro
-    h1
-      | Give feedback, make an impact.
-      br
-      | Get data, be empowered.
-      br
-      | Discover patterns to transform your life
+    .slider
+      h1 Give feedback
+    .slider
+      h1 make an impact
+    .slider
+      h1 Get data
+    .slider
+      h1 transform your life
 
   .feedback_callout
     h1
-      a href=new_feedback_path Leave some Feedback
+      a href=new_feedback_path Leave Feedback
