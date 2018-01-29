@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180120023942) do
+ActiveRecord::Schema.define(version: 20180129063056) do
 
   create_table "authentication_providers", force: :cascade do |t|
     t.string "name"
@@ -29,13 +29,9 @@ ActiveRecord::Schema.define(version: 20180120023942) do
 
   create_table "feedbacks", force: :cascade do |t|
     t.text "message"
-    t.integer "user_rating"
     t.boolean "flagged", default: false
     t.boolean "anonymous", default: true
     t.boolean "read"
-    t.string "to_first_name"
-    t.string "to_last_name"
-    t.string "to_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "sender_id"
