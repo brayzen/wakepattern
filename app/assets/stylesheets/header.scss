@@ -10,6 +10,9 @@ header{
 	position: relative;
 	max-width: 48rem;
 	margin: 0 auto;
+	padding: 1rem 2rem;
+
+	&.has_logo{ justify-content: space-around; }
 
 	> * { z-index: 1; }
 
@@ -23,16 +26,9 @@ header{
 		z-index: 0;
 	}
 
-	.logo{
-		color: #fff;
-		font-weight: 700;
-		padding: .15rem;
-		border-radius: 3px;
+	a.logo{
 		font-size: 3.5em;
-		// font-size: 35px;
-		flex: 0 1 auto;
-		text-decoration: none;
-		padding: 1rem 2rem;
+		margin-bottom: -.8rem;
 	}
 
 	nav{
