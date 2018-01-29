@@ -6,10 +6,10 @@
         - @feedback.errors.full_messages.each do |message|
           li = message
   .name
-    = f.text_field :to_first_name, placeholder: 'first name'
-    = f.text_field :to_last_name, placeholder: 'last name'
+    = f.text_field :to_first_name, placeholder: 'First Name'
+    = f.text_field :to_last_name, placeholder: 'Last Name'
 
-  = f.text_field :to_email, placeholder: 'email'
+  = f.text_field :to_email, placeholder: 'Email'
   = f.text_area :message, class: 'message', placeholder: 'What would you like to say?'
 
   ul.traits
