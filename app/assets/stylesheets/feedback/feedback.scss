@@ -1,12 +1,16 @@
 .feedback_form{
   .name{
     display: flex;
+
+    input:first-child{ margin-right: 1rem; }
   }
 
   textarea.message{
     min-width: 200px;
     min-height: 100px;
   }
+
+  input{ display: block; }
 
   input[type="text"]{
     margin-bottom: 15px;

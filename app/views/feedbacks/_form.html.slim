@@ -5,20 +5,12 @@
       ul
         - @feedback.errors.full_messages.each do |message|
           li = message
-
-  h3 To:
-  = f.label :to_email, 'Email'
-  = f.text_field :to_email
-
-  div Name
   .name
-    = f.label :to_first_name, 'First: '
-    = f.text_field :to_first_name
-    = f.label :to_last_name, 'Last: '
-    = f.text_field :to_last_name
+    = f.text_field :to_first_name, placeholder: 'first name'
+    = f.text_field :to_last_name, placeholder: 'last name'
 
-  = f.label :message
-  = f.text_area :message, class: 'message'
+  = f.text_field :to_email, placeholder: 'email'
+  = f.text_area :message, class: 'message', placeholder: 'What would you like to say?'
 
   ul.traits
     - f.object.all_traits

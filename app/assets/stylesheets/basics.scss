@@ -1,9 +1,24 @@
+h1, h2, h3{ margin-bottom: 1rem; }
 h1{ font-size: 3.6rem; }
 h2{ font-size: 3.0rem; }
+h3{ font-size: 2.5rem; }
 
 a{
   cursor: pointer;
   text-decoration: none;
 
   &:active, &:visited, &:hover{ color: inherit; }
+}
+
+body{ background: #ddd; }
+
+.container{
+  margin: 0 auto;
+  max-width: 48rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  min-height: 50rem;
+  text-transform: capitalize;
 }
