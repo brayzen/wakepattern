@@ -1,14 +1,34 @@
+@import 'variables';
+
 .feedback_form{
+  font-size: 1.8rem;
+
+  input, textarea{
+    font-size: 1.8rem;
+    border: none;
+    background: $background-color;
+    display: block;
+
+    &[type="text"]{
+      margin-bottom: 15px;
+      border-bottom: 2px solid #123BB9;
+
+      &:focus{ outline: none; }
+    }
+
+  }
+
   .name{
     display: flex;
+
+    input{
+      width: 48%;
+      margin-right: 2%;
+    }
   }
 
   textarea.message{
-    min-width: 200px;
-    min-height: 100px;
-  }
-
-  input[type="text"]{
-    margin-bottom: 15px;
+    width: 100%;
+    min-height: 12rem;
   }
 }
