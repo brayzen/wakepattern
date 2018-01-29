@@ -12,3 +12,15 @@ traits = Trait.create([
   { id: 10, name: 'composure',     order: 10, indent: 1 },
   { id: 11, name: 'complainer',    order: 11, indent: 1 }
 ])
+
+sender = User.new(name: 'Bender Rodriguez', password: 'fat dink', password_confirmation: 'fat dink', email: "Bender.Rodriguez@example.com")
+sender.save validate: false
+
+Feedback.create(Array.new(10).fill({})) do |f|
+  fn = Faker::Name.first_name
+  ln = Faker::Name.last_name
+  receiver = User.new(name: "#{fn} #{ln}", password: 'iggy pop2222', password_confirmation: 'iggy pop2222', email: "#{fn}.#{ln}@example.com")
+  receiver.save validate: false
+  f.sender_id   = sender.id
+  f.receiver_id = receiver.id
+end
