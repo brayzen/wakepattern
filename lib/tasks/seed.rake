@@ -1,5 +1,6 @@
 namespace :seed do
   task traits: :environment do
+    p 'seeding traits'
     # hard set the id for consistency
     traits = Trait.create([
       { id: 1,  name: 'helpful',       order: 1,  indent: 0 },
@@ -17,14 +18,13 @@ namespace :seed do
   end
 
   task bender: :environment do
-    sender = User.new(name: 'Bender Rodriguez', password: 'fat dink', password_confirmation: 'fat dink', email: "Bender.Rodriguez@example.com")
-    sender.save validate: false
+    p 'seeding bender'
+    sender = User.create!(name: 'bender rodriguez', password: 'password', password_confirmation: 'password', email: "bender.rodriguez@example.com")
 
     Feedback.create(Array.new(10).fill({})) do |f|
-      fn = Faker::Name.first_name
-      ln = Faker::Name.last_name
-      receiver = User.new(name: "#{fn} #{ln}", password: 'iggy pop2222', password_confirmation: 'iggy pop2222', email: "#{fn}.#{ln}@example.com")
-      receiver.save validate: false
+      fn = Faker::Name.first_name.downcase
+      ln = Faker::Name.last_name.downcase
+      receiver = User.create!(name: "#{fn} #{ln}", password: 'password', password_confirmation: 'password', email: "#{fn}.#{ln}@example.com")
       f.sender_id   = sender.id
       f.receiver_id = receiver.id
     end
