@@ -5,9 +5,11 @@ $bg-header-color: #cb45gf;
 header{
 	font-family: $primary-font;
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-end;
 	align-items: center;
 	position: relative;
+	max-width: 48rem;
+	margin: 0 auto;
 
 	> * { z-index: 1; }
 
