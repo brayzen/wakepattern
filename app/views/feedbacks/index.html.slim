@@ -5,6 +5,7 @@
         th First Name
         th Last Name
         th Message
+        th Ratings
 
     tbody
       - @feedbacks.each do |feedback|
@@ -12,3 +13,4 @@
           td = feedback.to_first_name
           td = feedback.to_last_name
           td = feedback.message
+          td = feedback.feedback_traits

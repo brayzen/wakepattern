@@ -25,6 +25,8 @@ namespace :seed do
   namespace :feedback do
     task :sent, [:id] => [:environment] do |t, args|
       sender = User.find args[:id]
+      p "seeding sent for #{sender.name}"
+
       Feedback.create(Array.new(10).fill({})) do |f|
         receiver = fake_user
         fake_feedback f, sender.id, receiver.id
@@ -33,6 +35,8 @@ namespace :seed do
 
     task :received, [:id] => [:environment] do |t, args|
       receiver = User.find args[:id]
+      p "seeding received for #{receiver.name}"
+
       Feedback.create(Array.new(10).fill({})) do |f|
         sender = fake_user
         fake_feedback f, sender.id, receiver.id
@@ -47,8 +51,13 @@ namespace :seed do
 
     def fake_feedback(f, sender_id, receiver_id)
       f.message = Faker::Lorem.paragraph 2, false, 3
-      f.sender_id  = sender_id
+      f.sender_id = sender_id
       f.receiver_id = receiver_id
+      f.feedback_traits = Array.new(rand(7)).fill(fake_feedback_trait)
+    end
+
+    def fake_feedback_trait
+      FeedbackTrait.new rating: rand(5), trait_id: Trait.all.sample.id
     end
   end
 end
