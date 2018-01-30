@@ -3,7 +3,7 @@ class FeedbacksController < ApplicationController
   before_action :set_feedback, only: [:show, :edit, :update, :destroy]
 
   def index
-    @feedbacks = current_or_guest_user.sent_feedbacks.last 10
+    @feedbacks = current_or_guest_user.sent_feedbacks.includes(:feedback_traits).last 10
 
     respond_to do |format|
       format.html { render :index }
