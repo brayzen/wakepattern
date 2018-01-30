@@ -12,8 +12,11 @@ class User < ApplicationRecord
   has_many :given_feedbacks, class_name: 'Feedback',  foreign_key: :receiver_id
 
   def self.create_from_omniauth(params)
+    # this will probably fail with some more comlicated names
+    names = params['info']['name'].split ' '
     attributes = {
-      name: params['info']['name'],
+      first_name: names[0],
+      last_name: names[1],
       email: params['info']['email'],
       password: Devise.friendly_token
     }
