@@ -4,6 +4,11 @@ class FeedbacksController < ApplicationController
 
   def index
     @feedbacks = current_or_guest_user.sent_feedbacks.last 10
+
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @feedbacks.as_json }
+    end
   end
 
   def show
@@ -25,7 +30,7 @@ class FeedbacksController < ApplicationController
     @feedback.reciever = receiver
     respond_to do |format|
       if @feedback.save
-        format.html { redirect_to root_path, notice: 'Feedback was successfully created.' }
+        format.html { redirect_to root_path }
         format.json { render :show, status: :created, location: @feedback }
       else
         format.html { render :new }
@@ -37,7 +42,7 @@ class FeedbacksController < ApplicationController
   def update
     respond_to do |format|
       if @feedback.update(feedback_params)
-        format.html { redirect_to @feedback, notice: 'Feedback was successfully updated.' }
+        format.html { redirect_to @feedback }
         format.json { render :show, status: :ok, location: @feedback }
       else
         format.html { render :edit }
@@ -49,7 +54,7 @@ class FeedbacksController < ApplicationController
   def destroy
     @feedback.destroy
     respond_to do |format|
-      format.html { redirect_to feedbacks_url, notice: 'Feedback was successfully destroyed.' }
+      format.html { redirect_to feedbacks_url }
       format.json { head :no_content }
     end
   end
