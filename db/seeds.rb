@@ -1,3 +1,5 @@
+AuthenticationProvider.create name: 'facebook'
+
 p 'creating bender'
 bender = User.create!({
   first_name: 'bender',
