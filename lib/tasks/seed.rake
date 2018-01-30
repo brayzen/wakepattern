@@ -26,23 +26,29 @@ namespace :seed do
     task :sent, [:id] => [:environment] do |t, args|
       sender = User.find args[:id]
       Feedback.create(Array.new(10).fill({})) do |f|
-        fn = Faker::Name.first_name.downcase
-        ln = Faker::Name.last_name.downcase
-        receiver = User.create!(name: "#{fn} #{ln}", password: 'password', password_confirmation: 'password', email: "#{fn}.#{ln}@example.com")
-        f.sender_id   = sender.id
-        f.receiver_id = receiver.id
+        receiver = fake_user
+        fake_feedback f, sender.id, receiver.id
       end
     end
 
     task :received, [:id] => [:environment] do |t, args|
       receiver = User.find args[:id]
       Feedback.create(Array.new(10).fill({})) do |f|
-        fn = Faker::Name.first_name.downcase
-        ln = Faker::Name.last_name.downcase
-        sender = User.create!(name: "#{fn} #{ln}", password: 'password', password_confirmation: 'password', email: "#{fn}.#{ln}@example.com")
-        f.sender_id   = sender.id
-        f.receiver_id = receiver.id
+        sender = fake_user
+        fake_feedback f, sender.id, receiver.id
       end
+    end
+
+    def fake_user
+      fn = Faker::Name.first_name.downcase
+      ln = Faker::Name.last_name.downcase
+      User.create!(name: "#{fn} #{ln}", password: 'password', password_confirmation: 'password', email: "#{fn}.#{ln}@example.com")
+    end
+
+    def fake_feedback(f, sender_id, receiver_id)
+      f.message = Faker::Lorem.paragraph 2, false, 3
+      f.sender_id  = sender_id
+      f.receiver_id = receiver_id
     end
   end
 end
