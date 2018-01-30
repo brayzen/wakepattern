@@ -17,16 +17,34 @@ namespace :seed do
     ])
   end
 
-  task bender: :environment do
-    p 'seeding bender'
-    sender = User.create!(name: 'bender rodriguez', password: 'password', password_confirmation: 'password', email: "bender.rodriguez@example.com")
+  task :user, [:first, :last] => [:environment] do
+    user = User.create!(name: "#{args[:first]} #{args[:last]}", password: 'password', password_confirmation: 'password', email: "#{args[:first]}.#{args[:last]}@example.com")
+    p "created user: ", user
+  end
 
-    Feedback.create(Array.new(10).fill({})) do |f|
-      fn = Faker::Name.first_name.downcase
-      ln = Faker::Name.last_name.downcase
-      receiver = User.create!(name: "#{fn} #{ln}", password: 'password', password_confirmation: 'password', email: "#{fn}.#{ln}@example.com")
-      f.sender_id   = sender.id
-      f.receiver_id = receiver.id
+  namespace :feedback do
+    task :sent, [:id] => [:environment] do |t, args|
+      sender = User.find args[:id]
+      Feedback.create(Array.new(10).fill({})) do |f|
+        fn = Faker::Name.first_name.downcase
+        ln = Faker::Name.last_name.downcase
+        receiver = User.create!(name: "#{fn} #{ln}", password: 'password', password_confirmation: 'password', email: "#{fn}.#{ln}@example.com")
+        f.sender_id   = sender.id
+        f.receiver_id = receiver.id
+      end
+    end
+
+    task :received, [:id] => [:environment] do |t, args|
+      receiver = User.find args[:id]
+      Feedback.create(Array.new(10).fill({})) do |f|
+        fn = Faker::Name.first_name.downcase
+        ln = Faker::Name.last_name.downcase
+        sender = User.create!(name: "#{fn} #{ln}", password: 'password', password_confirmation: 'password', email: "#{fn}.#{ln}@example.com")
+        f.sender_id   = sender.id
+        f.receiver_id = receiver.id
+      end
     end
   end
 end
+
+
