@@ -7,6 +7,9 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
+  has_many :sent_feedbacks, class_name: 'Feedback', foreign_key: :sender_id
+  has_many :given_feedbacks, class_name: 'Feedback',  foreign_key: :receiver_id
+
   def self.create_from_omniauth(params)
     attributes = {
       name: params['info']['name'],
