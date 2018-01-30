@@ -23,6 +23,8 @@ gem 'omniauth-facebook'
 gem 'nokogiri'
 gem 'dotenv-rails'
 gem 'aws-sdk'
+gem 'webpacker'
+gem 'react-rails'
 
 group :development, :test do
   gem 'pry-byebug'
