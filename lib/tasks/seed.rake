@@ -18,14 +18,14 @@ namespace :seed do
   end
 
   task :user, [:first, :last] => [:environment] do
-    user = User.create!(name: "#{args[:first]} #{args[:last]}", password: 'password', password_confirmation: 'password', email: "#{args[:first]}.#{args[:last]}@example.com")
+    user = User.create!(first_name: args[:first], last_name: args[:last], password: 'password', password_confirmation: 'password', email: "#{args[:first]}.#{args[:last]}@example.com")
     p "created user: ", user
   end
 
   namespace :feedback do
     task :sent, [:id] => [:environment] do |t, args|
       sender = User.find args[:id]
-      p "seeding sent for #{sender.name}"
+      p "seeding sent for #{sender.first_name} #{sender.last_name}"
 
       Feedback.create(Array.new(10).fill({})) do |f|
         receiver = fake_user
@@ -35,7 +35,7 @@ namespace :seed do
 
     task :received, [:id] => [:environment] do |t, args|
       receiver = User.find args[:id]
-      p "seeding received for #{receiver.name}"
+      p "seeding received for #{receiver.first_name} #{receiver.last_name}"
 
       Feedback.create(Array.new(10).fill({})) do |f|
         sender = fake_user
@@ -46,7 +46,13 @@ namespace :seed do
     def fake_user
       fn = Faker::Name.first_name.downcase
       ln = Faker::Name.last_name.downcase
-      User.create!(name: "#{fn} #{ln}", password: 'password', password_confirmation: 'password', email: "#{fn}.#{ln}@example.com")
+      User.create!({
+        first_name: fn,
+        last_name: ln,
+        password: 'password',
+        password_confirmation: 'password',
+        email: "#{fn}.#{ln}@example.com"
+      })
     end
 
     def fake_feedback(f, sender_id, receiver_id)

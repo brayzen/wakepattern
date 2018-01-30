@@ -5,7 +5,8 @@ class User < ApplicationRecord
   devise :omniauthable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :name, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 
   has_many :sent_feedbacks, class_name: 'Feedback', foreign_key: :sender_id
   has_many :given_feedbacks, class_name: 'Feedback',  foreign_key: :receiver_id
