@@ -59,7 +59,7 @@ namespace :seed do
       f.message = Faker::Lorem.paragraph 2, false, 3
       f.sender_id = sender_id
       f.receiver_id = receiver_id
-      f.feedback_traits = Array.new(rand(7)).fill(fake_feedback_trait)
+      f.feedback_traits = Array.new(1 + rand(7)).fill(fake_feedback_trait)
     end
 
     def fake_feedback_trait
