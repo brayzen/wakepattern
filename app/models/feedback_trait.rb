@@ -1,9 +1,6 @@
 class FeedbackTrait < ApplicationRecord
 	belongs_to :feedback, inverse_of: :feedback_traits
-
-  def trait
-    @trait ||= Trait.find trait_id
-  end
+  belongs_to :trait
 
   def name
     trait.name
@@ -12,4 +9,5 @@ class FeedbackTrait < ApplicationRecord
   def indent
     trait.indent
   end
+
 end

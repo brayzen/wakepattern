@@ -17,15 +17,18 @@ class Feedback < ApplicationRecord
     end
   end
 
-  def to_first_name
-    receiver&.name
-  end
-
-  def to_last_name
-    receiver&.name
-  end
-
-  def to_email
-    receiver&.email
+  alias_method :to_json, :as_json
+  def as_json
+    to_json({
+      only: [:message, :read],
+      include: [
+        {
+          receiver: { only: [], methods: :name }
+        },
+        {
+          feedback_traits: { only: :rating, methods: :name }
+        }
+      ]
+    })
   end
 end

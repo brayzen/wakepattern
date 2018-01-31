@@ -11,8 +11,12 @@ class User < ApplicationRecord
   has_many :sent_feedbacks, class_name: 'Feedback', foreign_key: :sender_id
   has_many :given_feedbacks, class_name: 'Feedback',  foreign_key: :receiver_id
 
+  def name
+    "#{first_name} #{last_name}"
+  end
+
   def self.create_from_omniauth(params)
-    # this will probably fail with some more comlicated names
+    # this will probably fail with some more complicated names
     names = params['info']['name'].split ' '
     attributes = {
       first_name: names[0],
