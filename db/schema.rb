@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20180130230429) do
     t.text "message"
     t.boolean "flagged", default: false
     t.boolean "anonymous", default: true
-    t.boolean "read"
+    t.boolean "read", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "sender_id"
