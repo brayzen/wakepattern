@@ -1,34 +1,4 @@
-@import 'variables';
+.feedback{
+  font-size: 1.6rem;
 
-.feedback_form{
-  font-size: 1.8rem;
-
-  input, textarea{
-    font-size: 1.8rem;
-    border: none;
-    background: $background-color;
-    display: block;
-
-    &[type="text"]{
-      margin-bottom: 15px;
-      border-bottom: 2px solid #123BB9;
-
-      &:focus{ outline: none; }
-    }
-
-  }
-
-  .name{
-    display: flex;
-
-    input{
-      width: 48%;
-      margin-right: 2%;
-    }
-  }
-
-  textarea.message{
-    width: 100%;
-    min-height: 12rem;
-  }
 }

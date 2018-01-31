@@ -26,7 +26,7 @@ class Feedback < ApplicationRecord
           receiver: { only: [], methods: :name }
         },
         {
-          feedback_traits: { only: :rating, methods: :name }
+          feedback_traits: { only: :rating, methods: [:name, :indent] }
         }
       ]
     })

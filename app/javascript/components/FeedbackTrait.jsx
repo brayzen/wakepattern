@@ -5,7 +5,9 @@ class FeedbackTrait extends React.Component{
   render(){
     return <div className="trait" data-name={this.props.name}>
         <div className="name">{this.props.name}</div>
-        <Star/><Star/><Star/><Star/><Star/>
+        <div className="rating_stars">
+          <Star/><Star/><Star/><Star/><Star/>
+        </div>
       </div>
   }
 }
