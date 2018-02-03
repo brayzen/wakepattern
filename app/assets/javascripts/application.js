@@ -12,6 +12,4 @@
 //
 //= require jquery
 //= require rails-ujs
-// require turbolinks
 //= require ratings
-//= require_tree .

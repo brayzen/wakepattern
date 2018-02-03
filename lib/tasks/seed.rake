@@ -18,31 +18,52 @@ namespace :seed do
   end
 
   task :user, [:first, :last] => [:environment] do
-    user = User.create!(name: "#{args[:first]} #{args[:last]}", password: 'password', password_confirmation: 'password', email: "#{args[:first]}.#{args[:last]}@example.com")
+    user = User.create!(first_name: args[:first], last_name: args[:last], password: 'password', password_confirmation: 'password', email: "#{args[:first]}.#{args[:last]}@example.com")
     p "created user: ", user
   end
 
   namespace :feedback do
     task :sent, [:id] => [:environment] do |t, args|
       sender = User.find args[:id]
-      Feedback.create(Array.new(10).fill({})) do |f|
-        fn = Faker::Name.first_name.downcase
-        ln = Faker::Name.last_name.downcase
-        receiver = User.create!(name: "#{fn} #{ln}", password: 'password', password_confirmation: 'password', email: "#{fn}.#{ln}@example.com")
-        f.sender_id   = sender.id
-        f.receiver_id = receiver.id
+      p "seeding sent for #{sender.first_name} #{sender.last_name}"
+
+      Feedback.create(Array.new(10){ {} }) do |f|
+        receiver = fake_user
+        fake_feedback f, sender.id, receiver.id
       end
     end
 
     task :received, [:id] => [:environment] do |t, args|
       receiver = User.find args[:id]
-      Feedback.create(Array.new(10).fill({})) do |f|
-        fn = Faker::Name.first_name.downcase
-        ln = Faker::Name.last_name.downcase
-        sender = User.create!(name: "#{fn} #{ln}", password: 'password', password_confirmation: 'password', email: "#{fn}.#{ln}@example.com")
-        f.sender_id   = sender.id
-        f.receiver_id = receiver.id
+      p "seeding received for #{receiver.first_name} #{receiver.last_name}"
+
+      Feedback.create(Array.new(10){ {} }) do |f|
+        sender = fake_user
+        fake_feedback f, sender.id, receiver.id
       end
+    end
+
+    def fake_user
+      fn = Faker::Name.first_name.downcase
+      ln = Faker::Name.last_name.downcase
+      User.create!({
+        first_name: fn,
+        last_name: ln,
+        password: 'password',
+        password_confirmation: 'password',
+        email: "#{fn}.#{ln}@example.com"
+      })
+    end
+
+    def fake_feedback(f, sender_id, receiver_id)
+      f.message = Faker::Lorem.paragraph 2, false, 3
+      f.sender_id = sender_id
+      f.receiver_id = receiver_id
+      f.feedback_traits = Array.new(rand(1..7)){ fake_feedback_trait }
+    end
+
+    def fake_feedback_trait
+      FeedbackTrait.new rating: rand(1..5), trait_id: Trait.all.sample.id
     end
   end
 end

@@ -1,14 +1,7 @@
-.container
-  table
-    thead
-      tr
-        th First Name
-        th Last Name
-        th Message
+- content_for :javascript
+  = javascript_pack_tag 'application'
 
-    tbody
-      - @feedbacks.each do |feedback|
-        tr
-          td = feedback.to_first_name
-          td = feedback.to_last_name
-          td = feedback.message
+.container
+  - @feedbacks.each do |feedback|
+    = react_component "Feedback", feedback.as_json
+

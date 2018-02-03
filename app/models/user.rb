@@ -5,14 +5,22 @@ class User < ApplicationRecord
   devise :omniauthable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :name, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 
   has_many :sent_feedbacks, class_name: 'Feedback', foreign_key: :sender_id
   has_many :given_feedbacks, class_name: 'Feedback',  foreign_key: :receiver_id
 
+  def name
+    "#{first_name} #{last_name}"
+  end
+
   def self.create_from_omniauth(params)
+    # this will probably fail with some more complicated names
+    names = params['info']['name'].split ' '
     attributes = {
-      name: params['info']['name'],
+      first_name: names[0],
+      last_name: names[1],
       email: params['info']['email'],
       password: Devise.friendly_token
     }

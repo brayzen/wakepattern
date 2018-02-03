@@ -12,10 +12,9 @@
  *
  *
  *
- *= require reset
- *= require basics
- *= require logo
- *= require fonts
- *= require header
- *= require_tree ./feedback
+ *= require basic/reset
+ *= require basic/basics
+ *= require basic/logo
+ *= require basic/fonts
+ *= require basic/header
  */

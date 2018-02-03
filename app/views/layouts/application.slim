@@ -4,10 +4,19 @@ html
     title WakePattern
     = csrf_meta_tags
 
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    = content_for :stylesheets
-    = content_for :javascripts
+    = stylesheet_link_tag    'application', media: 'all'
+
+    - base_assets = "#{params[:controller].singularize}"
+    - if WakePattern::Application.assets.find_asset "#{base_assets}.css"
+        = stylesheet_link_tag base_assets
+
+    = javascript_include_tag 'application'
+
+    - if WakePattern::Application.assets.find_asset "#{base_assets}.coffee"
+        = javascript_include_tag base_assets
+
+    = content_for :javascript
+
   body
 
     = render 'static/header'
