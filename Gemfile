@@ -22,20 +22,15 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'nokogiri'
 gem 'dotenv-rails'
-gem 'aws-sdk'
 gem 'webpacker'
 gem 'react-rails'
+gem 'aws-sdk-ses'
 gem 'pg', '~> 0.18'
 
 group :development, :test do
   gem 'pry-byebug'
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-	gem 'capistrano',         require: false
-	gem 'capistrano-rvm',     require: false
-	gem 'capistrano-rails',   require: false
-	gem 'capistrano-bundler', require: false
-	gem 'capistrano3-puma',   require: false
   gem 'faker'
 end
 
