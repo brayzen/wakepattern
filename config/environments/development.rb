@@ -1,5 +1,5 @@
 Rails.application.configure do
-    config.webpacker.check_yarn_integrity = true  # Settings specified here will take precedence over those in config/application.rb.
+    config.webpacker.check_yarn_integrity = false  # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
@@ -38,7 +38,7 @@ Rails.application.configure do
 		user_name: ENV["SMTP_USERNAME"],
 		password: ENV["SMTP_PASSWORD"],
 		authentication: :login,
-		enable_starttls_auto: true	
+		enable_starttls_auto: true
 	}
 
   config.action_mailer.raise_delivery_errors = true
