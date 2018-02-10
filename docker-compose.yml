@@ -1,0 +1,23 @@
+version: '3'
+services:
+  db:
+    container_name: pgdb_wp
+    restart: always
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    environment:
+      RAILS_ENV: "development"
+    volumes:
+      - "pgdata:/var/lib/postgresql/data"
+  web:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+volumes:
+  pgdata:
