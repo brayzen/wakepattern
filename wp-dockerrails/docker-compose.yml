@@ -1,22 +1,18 @@
 version: '3'
 services:
   db:
-    container_name: pgdb
+    container_name: postgres
     restart: always
     image: postgres:latest
     ports:
-      - "5433:5432"
-    env_file:
-      - .env
+      - "5432:5432"
     volumes:
       - "pgdata:/var/lib/postgresql/data"
   web:
     build: .
-    env_file:
-      - .env
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     ports:
-      - ${PORT_MAP} 
+      - "3000:3000"
     depends_on:
       - db
 volumes:

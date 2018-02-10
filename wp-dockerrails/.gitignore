@@ -7,40 +7,11 @@
 # Ignore bundler config.
 /.bundle
 
-# Ignore .env "environment" file
-.env
-
-# Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
-
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
 !/log/.keep
 !/tmp/.keep
 
-/node_modules
-/yarn-error.log
-
+# Ignore Byebug command history file.
 .byebug_history
-
-**/*.swp
-**/*.swn
-**/*.swo
-**/*.swm
-**/*.swl
-**/*.swk
-
-.DS_Store
-
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
-/public/packs
-/public/packs-test
-/node_modules
-yarn-debug.log*
-yarn-error.log*
-.yarn-integrity

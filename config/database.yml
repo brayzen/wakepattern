@@ -1,15 +1,21 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: postgres
-  host: db
+  host: <%= ENV["PG_HOST"] %>
   password:
   pool: 5
 
 development:
   <<: *default
+  username: postgres
   database: wp_dev
 
 test:
   <<: *default
-  database: myapp_test
+  username: postgres
+  database: wp_test
+
+production:
+  <<: *default
+  username: postgres
+  database: wakepattern_prod
