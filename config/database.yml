@@ -8,7 +8,7 @@ default: &default
 
 development:
   <<: *default
-  database: myapp_dev
+  database: wp_dev
 
 test:
   <<: *default

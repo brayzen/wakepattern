@@ -6,6 +6,10 @@ services:
     image: postgres:latest
     ports:
       - "5432:5432"
+    env_file:
+      - .env
+    environment:
+      RAILS_ENV: "development"
     volumes:
       - "pgdata:/var/lib/postgresql/data"
   web:
