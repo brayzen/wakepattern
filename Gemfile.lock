@@ -685,6 +685,7 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
+    pg (0.21.0)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -824,6 +825,7 @@ DEPENDENCIES
   nokogiri
   omniauth
   omniauth-facebook
+  pg (~> 0.18)
   pry-byebug
   puma (~> 3.7)
   rails (~> 5.1.4)
@@ -841,4 +843,4 @@ DEPENDENCIES
   webpacker
 
 BUNDLED WITH
-   1.14.3
+   1.16.1

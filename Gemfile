@@ -25,6 +25,7 @@ gem 'dotenv-rails'
 gem 'aws-sdk'
 gem 'webpacker'
 gem 'react-rails'
+gem 'pg', '~> 0.18'
 
 group :development, :test do
   gem 'pry-byebug'
