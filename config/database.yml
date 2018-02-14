@@ -7,7 +7,7 @@ default: &default
 
 development:
   <<: *default
-  username: postgres
+  username: <%= ENV["LOCAL_PG_ROLE"] %>
   database: wp_dev
 
 test:
