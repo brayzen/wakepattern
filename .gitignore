@@ -31,6 +31,12 @@
 **/*.swm
 **/*.swl
 **/*.swk
+**/*.swe
+**/*.swf
+**/*.swg
+**/*.swh
+**/*.swi
+**/*.swj
 
 .DS_Store
 
