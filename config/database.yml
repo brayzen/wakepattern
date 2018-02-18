@@ -17,5 +17,6 @@ test:
 
 production:
   <<: *default
-  username: postgres
+  username: <%= ENV["LOCAL_PG_ROLE"] %>
+  password: <%= ENV["POSTGRES_PASSWORD"] %>
   database: wakepattern_prod
