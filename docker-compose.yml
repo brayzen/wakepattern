@@ -16,5 +16,8 @@ services:
       - ${PORT}:${PORT} 
     depends_on:
       - db
+    volumes:
+      - ./log:/myapp/log
+      - ./public/assets:/myapp/public/assets
 volumes:
   pgdata:
