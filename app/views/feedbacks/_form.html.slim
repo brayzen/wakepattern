@@ -5,11 +5,11 @@
       ul
         - @feedback.errors.full_messages.each do |message|
           li = message
-  .name
-    = f.text_field :to_first_name, placeholder: 'First Name'
-    = f.text_field :to_last_name, placeholder: 'Last Name'
+  .receiver
+    h3 Who would you like to leave feedback for:
+    = text_field_tag :receiver, nil, class: 'receiver'
+    = f.text_field :receiver_id, class: 'receiver_id hidden'
 
-  = f.text_field :to_email, placeholder: 'Email'
   = f.text_area :message, class: 'message', placeholder: 'What would you like to say?'
 
   ul.traits
