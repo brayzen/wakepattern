@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :sent_feedbacks, class_name: 'Feedback', foreign_key: :sender_id
   has_many :given_feedbacks, class_name: 'Feedback',  foreign_key: :receiver_id
 
+  fuzzily_searchable :name
+
   def name
     "#{first_name} #{last_name}"
   end
