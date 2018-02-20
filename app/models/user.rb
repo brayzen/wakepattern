@@ -17,6 +17,10 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def name_changed?
+    first_name_changed? || last_name_changed?
+  end
+
   def self.create_from_omniauth(params)
     # this will probably fail with some more complicated names
     names = params['info']['name'].split ' '

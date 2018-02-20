@@ -6,8 +6,7 @@
         - @feedback.errors.full_messages.each do |message|
           li = message
   .receiver
-    h3 Who would you like to leave feedback for:
-    = text_field_tag :receiver, nil, class: 'receiver'
+    = text_field_tag :receiver, nil, class: 'receiver', placeholder: 'name'
     = f.text_field :receiver_id, class: 'receiver_id hidden'
 
   = f.text_area :message, class: 'message', placeholder: 'What would you like to say?'

@@ -1,6 +1,3 @@
-- content_for :javascript
-  = javascript_pack_tag 'application'
-
 .container
   - @feedbacks.each do |feedback|
     = react_component "Feedback", feedback.as_json
