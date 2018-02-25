@@ -1,4 +1,19 @@
 .feedback{
   font-size: 1.6rem;
+  border-radius: 1.5rem;
+  background: white;
+  margin: 2rem auto;
+  padding: 2rem;
 
+  .recipient{
+    font-size: 2.2rem;
+    font-weight: bold;
+  }
+
+  .message{
+    padding: 1rem;
+    background: #ccc;
+    border-radius: 1rem;
+    margin: 1rem auto;
+  }
 }
