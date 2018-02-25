@@ -24,10 +24,8 @@ class FeedbacksController < ApplicationController
   def create
     @feedback = Feedback.new feedback_params
     @feedback.sender = current_or_guest_user
-    receiver = User.find_or_create_by(email: feedback_params[:to_email])
+    @feedback.receiver = User.find_by_email feedback_params[:to_email]
 
-    receiver.save! validate: false unless receiver.persisted?
-    @feedback.reciever = receiver
     respond_to do |format|
       if @feedback.save
         format.html { redirect_to root_path }

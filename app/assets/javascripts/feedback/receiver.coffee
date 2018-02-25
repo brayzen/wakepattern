@@ -7,5 +7,6 @@ class @Receiver
     @elem.on 'change, paste, keyup', (e)->
       text = $(@).val()
       return unless text.length >= 3
+
       $.get "/users/fuzzysearch/#{text}", (data)->
         console.log data
