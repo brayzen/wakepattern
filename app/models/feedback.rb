@@ -4,6 +4,7 @@ class Feedback < ApplicationRecord
   has_many :feedback_traits, inverse_of: :feedback, dependent: :destroy
   has_many :traits, through: :feedback_traits
   accepts_nested_attributes_for :feedback_traits, allow_destroy: true, reject_if: proc { |attributes| attributes['rating'].blank? }
+  accepts_nested_attributes_for :receiver
 
   alias_method :active_feedback_traits, :feedback_traits
 

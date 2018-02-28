@@ -16,6 +16,8 @@ class FeedbacksController < ApplicationController
 
   def new
     @feedback = Feedback.new
+    @feedback.receiver = User.find_by_handle params[:handle] if params[:handle]
+    redirect_to status: 404 if current_user.nil? && @feedback.receiver.nil?
   end
 
   def edit
@@ -24,7 +26,11 @@ class FeedbacksController < ApplicationController
   def create
     @feedback = Feedback.new feedback_params
     @feedback.sender = current_or_guest_user
-    @feedback.receiver = User.find_by_email feedback_params[:to_email]
+    if params[:to_email]
+      @feedback.receiver = User.find_by_email feedback_params[:to_email]
+    elsif params[:receiver_attributes][:handle]
+      @feedback.receiver = User.find_by_handle feedback_params[:receiver_attributes][:handle].downcase
+    end
 
     respond_to do |format|
       if @feedback.save
@@ -63,6 +69,6 @@ class FeedbacksController < ApplicationController
     end
 
     def feedback_params
-      params.require(:feedback).permit(:message, :to_email, :to_first_name, :to_last_name, feedback_traits_attributes: [:name, :rating])
+      params.require(:feedback).permit(:message, :to_email, :to_first_name, :to_last_name, feedback_traits_attributes: [:name, :rating], receiver_attributes: :handle)
     end
 end
