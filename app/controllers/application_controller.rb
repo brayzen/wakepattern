@@ -2,6 +2,10 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
   protect_from_forgery with: :exception
 
+  def render_not_found
+    redirect_to :not_found
+  end
+
   # if user is logged in, return current_user, else return guest_user
   def current_or_guest_user
     return guest_user unless current_user

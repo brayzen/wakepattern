@@ -17,7 +17,7 @@ class FeedbacksController < ApplicationController
   def new
     @feedback = Feedback.new
     @feedback.receiver = User.find_by_handle params[:handle] if params[:handle]
-    redirect_to status: 404 if current_user.nil? && @feedback.receiver.nil?
+    render_not_found if current_user.nil? && @feedback.receiver.nil?
   end
 
   def edit
