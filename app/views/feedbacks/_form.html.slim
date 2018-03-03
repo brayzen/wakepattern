@@ -6,7 +6,7 @@
         - @feedback.errors.full_messages.each do |message|
           li = message
   .receiver
-    - if f.object.receiver
+    - if f.object.receiver&.name.present?
       = f.object.receiver.name
     - else
       = f.fields_for :receiver do |r|

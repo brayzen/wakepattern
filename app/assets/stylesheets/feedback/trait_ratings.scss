@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 27rem;
+  max-width: 30rem;
 
   &[data-indent='0']{}
   &[data-indent='1']{ margin-left: 20px; }

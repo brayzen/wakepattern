@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180225212921) do
+ActiveRecord::Schema.define(version: 20180303195748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 20180225212921) do
   create_table "feedback_traits", force: :cascade do |t|
     t.integer "feedback_id"
     t.integer "trait_id"
-    t.string "name"
     t.integer "rating"
     t.index ["feedback_id"], name: "index_feedback_traits_on_feedback_id"
     t.index ["trait_id"], name: "index_feedback_traits_on_trait_id"
