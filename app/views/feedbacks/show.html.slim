@@ -1,9 +1,6 @@
-p#notice = notice
+- content_for :javascript
+  = javascript_pack_tag 'application'
 
-p
-  strong Text:
-  = @feedback.text
-p
-  strong Userrated:
-  = @feedback.userRated
+.container
+  = react_component "Feedback", @feedback.as_json
 

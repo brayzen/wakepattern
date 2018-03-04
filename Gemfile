@@ -26,6 +26,7 @@ gem 'webpacker'
 gem 'react-rails'
 gem 'aws-sdk-ses'
 gem 'pg', '~> 0.18'
+gem 'fuzzily'
 
 group :development, :test do
   gem 'pry-byebug'

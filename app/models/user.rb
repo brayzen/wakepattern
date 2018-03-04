@@ -7,12 +7,25 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :handle, uniqueness: true
 
   has_many :sent_feedbacks, class_name: 'Feedback', foreign_key: :sender_id
   has_many :given_feedbacks, class_name: 'Feedback',  foreign_key: :receiver_id
 
+  fuzzily_searchable :name
+
+  before_save :pre_save
+
+  def pre_save
+    handle.downcase!
+  end
+
   def name
     "#{first_name} #{last_name}"
+  end
+
+  def name_changed?
+    first_name_changed? || last_name_changed?
   end
 
   def self.create_from_omniauth(params)

@@ -5,11 +5,16 @@
       ul
         - @feedback.errors.full_messages.each do |message|
           li = message
-  .name
-    = f.text_field :to_first_name, placeholder: 'First Name'
-    = f.text_field :to_last_name, placeholder: 'Last Name'
+  .receiver
+    - if f.object.receiver&.name.present?
+      = f.object.receiver.name
+    - else
+      = f.fields_for :receiver do |r|
+        = r.text_field :handle, placeholder: 'User Handle', class: 'receiver_handle'
+        - if current_user.present?
+          = r.text_field(:email, placeholder: 'Or Email',
+          class: 'receiver_email') if current_user.present?
 
-  = f.text_field :to_email, placeholder: 'Email'
   = f.text_area :message, class: 'message', placeholder: 'What would you like to say?'
 
   ul.traits
