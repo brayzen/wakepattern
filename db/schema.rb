@@ -32,9 +32,13 @@ ActiveRecord::Schema.define(version: 20180303195748) do
 
   create_table "feedbacks", force: :cascade do |t|
     t.text "message"
+    t.integer "user_rating"
     t.boolean "flagged", default: false
     t.boolean "anonymous", default: true
     t.boolean "read", default: false
+    t.string "to_first_name"
+    t.string "to_last_name"
+    t.string "to_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "sender_id"
