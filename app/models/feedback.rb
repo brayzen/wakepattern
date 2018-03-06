@@ -6,8 +6,8 @@ class Feedback < ApplicationRecord
   accepts_nested_attributes_for :feedback_traits, allow_destroy: true, reject_if: proc { |attributes| attributes['rating'].blank? }
   accepts_nested_attributes_for :receiver
 
-	validate reciever_check :reciever
 	
+	validate :receiver_check
   alias_method :active_feedback_traits, :feedback_traits
 
   def all_traits
@@ -20,10 +20,12 @@ class Feedback < ApplicationRecord
     end
   end
 
-	def reciever_check
-		errors.add(:email, EmailVerifier.validate email_address)
+	def receiver_check
+		puts 'hello you all'
+		errors.add :email, EmailVerifier.validate(email_address)
 	end
 	
+
   alias_method :to_json, :as_json
   def as_json
     to_json({
