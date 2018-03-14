@@ -11,8 +11,8 @@ class StaticController < ApplicationController
 			last_name: 'Ray',
 			email: 'brian.ray.biz@gmail.com'
 		}
-		FeedbackMailer.notice_email(@user).deliver_now
-		render 'feedback_mailer/notice_email'
+		FeedbackMailer.send_notice_email(@user, EmailVerifier.validate(@user[:email])).deliver_now
+		render 'feedback_mailer/send_notice_email'
 	end
 
 	def about
