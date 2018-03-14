@@ -11,11 +11,11 @@ class EmailVerificationTest < ActiveSupport::TestCase
 	end
 
 	test "API EmailVerifier.interpet is" do
-		assert_nil(EV.interpret response)
+		assert_equal(EV.pass?(response), true)
 	end
 	
 	test "API response.validate is" do
-		assert_nil(EV.validate email_pass)
+		assert_equal(EV.validate(email_pass), true)
 	end
 
 
@@ -37,23 +37,19 @@ class EmailVerificationTest < ActiveSupport::TestCase
 		assert_equal(response_2.to_s, error_message.to_s) 
 	end
 
-
-	test "API EmailVerifier.interpet fails and prints message for bad format" do
-		interpreted = EV.interpret(response_3)
-		assert_equal(interpreted, error_message["ErrorMessage"][0]["Error"])
-	end
-
-  
-	test "3nd test with failing email address, Email verification API call" do
-		refute_empty response_3
+	test "API EmailVerifier.pass? fails and prints message for bad format" do
+		failed = EV.pass?(response_3)
+		assert_equal(failed, error_message["ErrorMessage"])
 	end
 
 	test "API call for bad Domain" do
-		assert_equal(response_3.to_s, error_message.to_s) 
+		assert_equal(response_3.class, Hash)
+		assert_equal(response_3, error_message) 
 	end
 
 	test "API EmailVerifier.interpet fails and prints message for bad DNS format" do
-		interpreted = EV.interpret(response_3)
-		assert_equal(interpreted, error_message["ErrorMessage"][0]["Error"])
+		failed = EV.pass?(response_3)
+		assert_equal(failed.class, Array)
+		assert_equal(failed, error_message["ErrorMessage"])
 	end
 end

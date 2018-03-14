@@ -21,7 +21,6 @@ class Feedback < ApplicationRecord
   end
 
 	def receiver_check
-		puts 'hello you all'
 		errors.add :email, EmailVerifier.validate(email_address)
 	end
 	
