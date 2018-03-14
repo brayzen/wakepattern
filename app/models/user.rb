@@ -9,6 +9,8 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :handle, uniqueness: true
 
+	validates_uniqueness_of :email
+
   has_many :sent_feedbacks, class_name: 'Feedback', foreign_key: :sender_id
   has_many :given_feedbacks, class_name: 'Feedback',  foreign_key: :receiver_id
 
