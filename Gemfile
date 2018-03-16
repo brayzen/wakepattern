@@ -32,7 +32,7 @@ gem 'factory_bot_rails'
 
 group :development, :test do
   gem 'pry-byebug'
-  gem 'capybara', '~> 2.13'
+  gem 'minitest-rails-capybara'
   gem 'selenium-webdriver'
   gem 'faker'
 end
