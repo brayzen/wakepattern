@@ -28,6 +28,7 @@ gem 'aws-sdk-ses'
 gem 'pg', '~> 0.18'
 gem 'fuzzily'
 gem 'http'
+gem 'factory_bot'
 
 group :development, :test do
   gem 'pry-byebug'
