@@ -13,9 +13,7 @@ class FeedbackPagesTest < Capybara::Rails::TestCase
   end
 
   test 'Create Feedback' do
-    sender = create :sender
     receiver = create :receiver
-    login_as sender
     visit "/feedbacks/new/#{receiver.handle}"
     fill_in 'feedback_message', with: @message
     click_on 'Let them know how you feel'
