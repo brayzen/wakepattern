@@ -31,14 +31,14 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new feedback_params
     @feedback.sender = current_or_guest_user
 
-    if feedback_params[:receiver_attributes][:email]
-      @feedback.receiver = User.find_by_email feedback_params[:to_email]
+    if feedback_params[:receiver_attributes]&[:email]
+      @feedback.receiver = User.find_by_email feedback_params[:receiver_attributes][:email]
     end
 
-    if @feedback.receiver.nil? && feedback_params[:receiver_attributes][:handle]
+    if @feedback.receiver.nil? && feedback_params[:receiver_attributes]&[:handle]
       @feedback.receiver = User.find_by_handle feedback_params[:receiver_attributes][:handle].downcase
     end
-
+    binding.pry unless @feedback.valid?
     respond_to do |format|
       if @feedback.save
         format.html { redirect_to @feedback }
@@ -76,6 +76,6 @@ class FeedbacksController < ApplicationController
     end
 
     def feedback_params
-      params.require(:feedback).permit(:message, feedback_traits_attributes: [:trait_id, :rating], receiver_attributes: [:handle, :email])
+      params.require(:feedback).permit(:message, :receiver_id, feedback_traits_attributes: [:trait_id, :rating], feedback_receiver_attributes: [:email, :handle])
     end
 end

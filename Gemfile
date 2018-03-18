@@ -28,10 +28,11 @@ gem 'aws-sdk-ses'
 gem 'pg', '~> 0.18'
 gem 'fuzzily'
 gem 'http'
+gem 'factory_bot_rails'
 
 group :development, :test do
   gem 'pry-byebug'
-  gem 'capybara', '~> 2.13'
+  gem 'minitest-rails-capybara'
   gem 'selenium-webdriver'
   gem 'faker'
 end

@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :handle, presence: true
   validates :handle, uniqueness: true
 
 	validates_uniqueness_of :email
@@ -16,10 +17,14 @@ class User < ApplicationRecord
 
   fuzzily_searchable :name
 
-  before_save :pre_save
+  before_save :pre_save, unless: Proc.new{ |user| user.guest? }
 
   def pre_save
     handle.downcase!
+  end
+
+  def guest?
+    first_name == 'guest'
   end
 
   def name
