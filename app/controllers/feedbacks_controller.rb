@@ -38,7 +38,7 @@ class FeedbacksController < ApplicationController
     if @feedback.receiver.nil? && feedback_params[:receiver_attributes]&[:handle]
       @feedback.receiver = User.find_by_handle feedback_params[:receiver_attributes][:handle].downcase
     end
-    binding.pry unless @feedback.valid?
+
     respond_to do |format|
       if @feedback.save
         format.html { redirect_to @feedback }
