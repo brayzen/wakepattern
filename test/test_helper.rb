@@ -4,4 +4,5 @@ require 'minitest/rails/capybara'
 
 class ActiveSupport::TestCase
   include FactoryBot::Syntax::Methods
+  include Warden::Test::Helpers
 end

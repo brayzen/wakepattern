@@ -53,7 +53,11 @@ class ApplicationController < ActionController::Base
   end
 
   def create_guest_user
-    user = User.new name: 'guest', email: "guest_#{Time.now.to_i}#{rand(100)}@example.com"
+    user = User.new(
+      first_name: 'guest',
+      last_name: 'user',
+      email: "guest_#{Time.now.to_i}#{rand(100)}@example.com"
+    )
     user.save! validate: false
     session[:guest_user_id] = user.id
     user

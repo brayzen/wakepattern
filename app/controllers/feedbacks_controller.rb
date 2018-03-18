@@ -31,12 +31,12 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new feedback_params
     @feedback.sender = current_or_guest_user
 
-    if feedback_params[:receiver_attributes][:email]
-      @feedback.receiver = User.find_by_email feedback_params[:to_email]
+    if feedback_params[:receiver_email]
+      @feedback.receiver = User.find_by_email feedback_params[:receiver_email]
     end
 
-    if @feedback.receiver.nil? && feedback_params[:receiver_attributes][:handle]
-      @feedback.receiver = User.find_by_handle feedback_params[:receiver_attributes][:handle].downcase
+    if @feedback.receiver.nil? && feedback_params[:receiver_handle]
+      @feedback.receiver = User.find_by_handle feedback_params[:receiver_handle].downcase
     end
 
     respond_to do |format|
@@ -76,6 +76,6 @@ class FeedbacksController < ApplicationController
     end
 
     def feedback_params
-      params.require(:feedback).permit(:message, feedback_traits_attributes: [:trait_id, :rating], receiver_attributes: [:handle, :email])
+      params.require(:feedback).permit(:message, :receiver_id, :receiver_email, :receiver_handle, feedback_traits_attributes: [:trait_id, :rating])
     end
 end

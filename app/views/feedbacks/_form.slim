@@ -8,6 +8,7 @@
   .receiver
     - if f.object.receiver&.name.present?
       = f.object.receiver.name
+      = f.text_field :receiver_id, value: f.object.receiver.id, class: 'hidden'
     - else
       = f.fields_for :receiver do |r|
         = r.text_field :handle, placeholder: 'User Handle', class: 'receiver_handle'
