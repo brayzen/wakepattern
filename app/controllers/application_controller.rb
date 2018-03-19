@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
   include ApplicationHelper
   protect_from_forgery with: :exception
 
@@ -61,5 +63,11 @@ class ApplicationController < ActionController::Base
     user.save! validate: false
     session[:guest_user_id] = user.id
     user
+  end
+
+protected
+	
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :handle])
   end
 end
