@@ -22,12 +22,8 @@ class StaticController < ApplicationController
 	end
 	
   def correct_email_land
-		@resource = User.new
-		@resource_name = User
 	end
 
 	def incorrect_email_land
-		@resource = User.new
-		@resource_name = User
 	end
 end
