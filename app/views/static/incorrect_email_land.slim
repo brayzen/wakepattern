@@ -2,7 +2,7 @@ h1 Welcome to WakePattern
 p You've arrived here because you've recieved some incorrect feedback. 
 p We've noted that this email address does not belong to you, if you'd like to correct our mistake you can sign up and we'll only deliver emails intended for you.  
 
-//= render "devise/registrations/new"
+= render template: 'devise/registrations/new'
 
 p Otherwise, you can click this button 
 = link_to "remove_from_email_list_path", id: "remove_from_email_list", class: "but"
