@@ -16,7 +16,6 @@ class StaticController < ApplicationController
 	end
 
 	def about
-		render html: "<strong>Not Found</strong>".html_safe
 	end
 
 	def mission
