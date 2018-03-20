@@ -20,10 +20,4 @@ class StaticController < ApplicationController
 
 	def mission
 	end
-	
-  def correct_email_land
-	end
-
-	def incorrect_email_land
-	end
 end
