@@ -1,36 +1,4 @@
 h1 Welcome to WakePattern
 p You've arrived here because you've recieved some feedback.  Please signup to verify your email address, and we'll show you what someone has left for you.
 
-h2 Sign up
-= resource = @resource
-- binding.pry
-= form_for(resource, url: new_user_registration_path) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :first_name
-    br
-    = f.text_field :first_name, autofocus: true
-  .field
-    = f.label :last_name
-    br
-    = f.text_field :last_name, autofocus: true
-  .field
-    = f.label :handle
-    br
-    = f.text_field :handle, autofocus: true
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    em = @minimum_password_length if @minimum_password_length
-    br
-    = f.password_field :password, autocomplete: "off"
-  .field
-    = f.label :password_confirmation
-    br
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+= link_to "Sign Up", new_user_registration_path

@@ -6,34 +6,4 @@ p We've noted that this email address does not belong to you, if you'd like to c
 p Otherwise, you can click this button 
 = link_to "remove_from_email_list_path", id: "remove_from_email_list", class: "but"
 
-h2 Sign up
-= form_for(@resource, url: new_user_registration_path) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :first_name
-    br
-    = f.text_field :first_name, autofocus: true
-  .field
-    = f.label :last_name
-    br
-    = f.text_field :last_name, autofocus: true
-  .field
-    = f.label :handle
-    br
-    = f.text_field :handle, autofocus: true
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    em = @minimum_password_length if @minimum_password_length
-    br
-    = f.password_field :password, autocomplete: "off"
-  .field
-    = f.label :password_confirmation
-    br
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+= link_to "Sign Up", new_user_registration_path, id: "signup", class: "but"
