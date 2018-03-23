@@ -16,8 +16,15 @@ class StaticController < ApplicationController
 	end
 
 	def about
+		render html: "<strong>Not Found</strong>".html_safe
 	end
 
 	def mission
+	end
+	
+  def correct_email_land
+	end
+
+	def incorrect_email_land
 	end
 end

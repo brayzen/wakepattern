@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'about', to: 'static#about'
   get 'mission', to: 'static#mission'
   get 'mailer', to: 'static#mail_it'
+  get 'melanding', to: 'static#correct_email_land'
+  get 'notmelanding', to: 'static#incorrect_email_land'
   get 'users/fuzzysearch/:name', to: 'users#fuzzysearch'
   root 'static#home'
 
