@@ -1,0 +1,15 @@
+  - if header[:loggin]
+    #header
+      nav.loggin_nav
+        ul.header-bar
+          li#logo.nav-link.logo = link_to "Wake Pattern", root_path, id: "logo", class: "nav-link logo"
+          - if current_user.present?
+            li.nav-link = link_to 'Dashboard', feedbacks_path
+          li#filler.nav-link.nav-spacer
+          li = link_to "About", about_path, id: "about", class: "nav-link"
+          - if current_user.present?
+            li = link_to "Log out", destroy_user_session_path, method: :delete, id: "logout", class: "nav-link"
+          - else
+            li = link_to "Log in", new_user_session_path, id: "login", class: "nav-link"
+           
+

@@ -1,0 +1,13 @@
+h1 Welcome to WakePattern
+// if param correct_email equals true this if statement will activate
+-if params[:correct] 
+  p You've arrived here because you've recieved some feedback.  Please signup to verify your email address, and we'll show you what someone has left for you.
+-else
+  p You've arrived here because you've recieved some incorrect feedback. 
+  p We've noted that this email address does not belong to you, if you'd like to correct our mistake you can sign up and we'll only deliver emails intended for you.  
+  p Otherwise, you can click this button 
+  = link_to "remove_from_email_list_path", id: "remove_from_email_list", class: "but"
+
+
+= link_to "Sign Up", new_user_registration_path, id: "signup", class: "but"
+
