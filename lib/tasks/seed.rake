@@ -51,7 +51,8 @@ namespace :seed do
         last_name: ln,
         password: 'password',
         password_confirmation: 'password',
-        email: "#{fn}.#{ln}@example.com"
+        email: "#{fn}.#{ln}@example.com",
+        handle: fn
       })
     end
 
