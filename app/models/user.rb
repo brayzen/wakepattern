@@ -18,6 +18,10 @@ class User < ApplicationRecord
 
   before_save :pre_save, unless: Proc.new{ |user| user.guest? }
 
+  def find_by_handle(handle)
+    super handle.downcase
+  end
+
   def pre_save
     handle.downcase!
   end
