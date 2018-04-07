@@ -22,8 +22,6 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'nokogiri'
 gem 'dotenv-rails'
-gem 'webpacker'
-gem 'react-rails'
 gem 'aws-sdk-ses'
 gem 'pg', '~> 0.18'
 gem 'fuzzily'
@@ -35,6 +33,9 @@ group :development, :test do
   gem 'minitest-rails-capybara'
   gem 'selenium-webdriver'
   gem 'faker'
+  gem 'launchy'
+  gem 'teaspoon-jasmine'
+  gem 'phantomjs'
 end
 
 
