@@ -37,6 +37,7 @@ group :development, :test do
   gem 'faker'
   gem 'launchy'
   gem 'teaspoon-jasmine'
+  gem 'phantomjs'
 end
 
 
