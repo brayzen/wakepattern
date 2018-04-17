@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class FeedbackPagesTest < Capybara::Rails::TestCase
+  include Devise::Test::IntegrationHelpers
+
   before :each do
     @message = "Test Message"
   end
@@ -23,7 +25,7 @@ class FeedbackPagesTest < Capybara::Rails::TestCase
   test 'Create Feedback from email' do
     sender = create :sender
     receiver = create :receiver
-    login_as sender
+    sign_in sender
     visit "/feedbacks/new"
     fill_in 'feedback_receiver_attributes_email', with: receiver.email
     fill_in 'feedback_message', with: @message

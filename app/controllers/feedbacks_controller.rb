@@ -28,15 +28,21 @@ class FeedbacksController < ApplicationController
   end
 
   def create
-    @feedback = Feedback.new feedback_params
+    fp = feedback_params
+    rp = fp.delete :receiver_attributes
+    @feedback = Feedback.new fp
     @feedback.sender = current_or_guest_user
 
-    if feedback_params[:receiver_attributes]&[:email]
-      @feedback.receiver = User.find_by_email feedback_params[:receiver_attributes][:email]
-    end
+    # this is only temporary.  need to determine how we are handling errors
+    rp = feedback_params[:receiver_attributes]
+    render 'errors/not_found' unless rp
 
-    if @feedback.receiver.nil? && feedback_params[:receiver_attributes]&[:handle]
-      @feedback.receiver = User.find_by_handle feedback_params[:receiver_attributes][:handle].downcase
+    @feedback.receiver = if rp[:id]
+      User.find rp[:id]
+    elsif rp[:email]
+      User.find_by_email rp[:email]
+    elsif rp[:handle]
+      User.find_by_handle rp[:handle]
     end
 
     respond_to do |format|
@@ -76,6 +82,6 @@ class FeedbacksController < ApplicationController
     end
 
     def feedback_params
-      params.require(:feedback).permit(:message, :receiver_id, feedback_traits_attributes: [:trait_id, :rating], feedback_receiver_attributes: [:email, :handle])
+      params.require(:feedback).permit(:message, feedback_traits_attributes: [:trait_id, :rating], receiver_attributes: [:id, :email, :handle])
     end
 end

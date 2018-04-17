@@ -6,7 +6,8 @@ bender = User.create!({
   last_name: 'rodriguez',
   password: 'password',
   password_confirmation: 'password',
-  email: "bender.rodriguez@example.com"
+  email: "bender.rodriguez@example.com",
+  handle: 'bender'
 })
 
 Rake::Task['seed:traits'].invoke
