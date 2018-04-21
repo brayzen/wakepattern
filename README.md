@@ -14,9 +14,12 @@ Learn how to be a more likable individual \*anonymously
 rake db:create
 rake db:migrate
 
+#### How to run the test suite
+gem install capybara
+rails test
+
 <!-- #### Database initialization
 
-#### How to run the test suite
 
 #### Services (job queues, cache servers, search engines, etc.)
 
