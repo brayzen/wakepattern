@@ -23,21 +23,20 @@ namespace :seed do
   end
 
   namespace :feedback do
-    task :sent, [:id] => [:environment] do |t, args|
+    task :sent, [:id, :count] => [:environment] do |t, args|
       sender = User.find args[:id]
       p "seeding sent for #{sender.first_name} #{sender.last_name}"
 
-      Feedback.create(Array.new(10){ {} }) do |f|
+      Feedback.create(Array.new(args[:count].to_i){ {} }) do |f|
         receiver = fake_user
         fake_feedback f, sender.id, receiver.id
       end
     end
 
-    task :received, [:id] => [:environment] do |t, args|
+    task :received, [:id, :count] => [:environment] do |t, args|
       receiver = User.find args[:id]
       p "seeding received for #{receiver.first_name} #{receiver.last_name}"
-
-      Feedback.create(Array.new(10){ {} }) do |f|
+      Feedback.create(Array.new(args[:count].to_i){ {} }) do |f|
         sender = fake_user
         fake_feedback f, sender.id, receiver.id
       end
@@ -52,7 +51,7 @@ namespace :seed do
         password: 'password',
         password_confirmation: 'password',
         email: "#{fn}.#{ln}@example.com",
-        handle: fn
+        handle: "#{fn}#{rand(100)}"
       })
     end
 
@@ -61,6 +60,7 @@ namespace :seed do
       f.sender_id = sender_id
       f.receiver_id = receiver_id
       f.feedback_traits = Array.new(rand(1..7)){ fake_feedback_trait }
+      f.created_at = Faker::Date.between 2.months.ago, 1.day.ago
     end
 
     def fake_feedback_trait

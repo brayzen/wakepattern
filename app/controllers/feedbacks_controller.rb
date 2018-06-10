@@ -3,11 +3,17 @@ class FeedbacksController < ApplicationController
   before_action :set_feedback, only: [:show, :edit, :update, :destroy]
 
   def index
-    @feedbacks = current_or_guest_user.sent_feedbacks.includes(:receiver, feedback_traits: [:trait]).last 10
-
     respond_to do |format|
-      format.html { render :index }
-      format.json { render json: @feedbacks.as_json }
+      format.html
+      format.json do
+        @feedbacks = if params[:type] == 'received'
+          current_or_guest_user.received_feedbacks.includes(:sender, feedback_traits: [:trait])
+        else
+          current_or_guest_user.sent_feedbacks.includes(:receiver, feedback_traits: [:trait])
+        end#.sort_by(:created_at).last 10
+
+        return ActionCable.server.broadcast 'feedbacks', feedbacks: @feedbacks.to_json
+      end
     end
   end
 

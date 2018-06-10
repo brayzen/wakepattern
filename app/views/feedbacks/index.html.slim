@@ -1,4 +1,21 @@
-.container
-  - @feedbacks.each do |feedback|
-    / = react_component "Feedback", feedback.as_json
+#feedbacks.container
+  nav.feedback_nav
+    button.get.sent[
+      @click = "get_feedbacks('sent')"
+    ] Sent
+    button.get.received[
+      @click = "get_feedbacks('received')"
+    ] Received
+    button.sort.name[
+      @click = "sort('receiver.name')"
+    ] Name
+    button.sort.date[
+      @click = "sort('created_at')"
+    ] Date
 
+  ol
+    feedback[
+      v-for = "feedback in feedbacks"
+      v-bind:feedback = "feedback"
+      v-bind:key = "feedback.id"
+    ]

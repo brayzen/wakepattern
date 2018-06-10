@@ -13,7 +13,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'slim-rails', '~> 3.1.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
-gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'devise', '~> 4.4.0'
 gem 'bcrypt'
@@ -26,9 +25,10 @@ gem 'aws-sdk-ses'
 gem 'pg', '~> 0.18'
 gem 'fuzzily'
 gem 'http'
-gem 'factory_bot_rails'
+gem 'vuejs-rails'
 
 group :development, :test do
+  gem 'factory_bot_rails'
   gem 'pry-byebug'
   gem 'minitest-rails-capybara'
   gem 'selenium-webdriver'
@@ -45,6 +45,4 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
-
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 

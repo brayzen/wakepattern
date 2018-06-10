@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => '/cable'
+
   match '404', to: "errors#not_found", via: :all, as: :not_found
   match '500', to: "errors#internal_server_error", via: :all, as: :server_error
 

@@ -12,4 +12,6 @@
 //
 //= require jquery
 //= require rails-ujs
+//  require ./channels
+//= require cable
 //= require ratings

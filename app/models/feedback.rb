@@ -24,10 +24,13 @@ class Feedback < ApplicationRecord
 		errors.add :email, EmailVerifier.validate(receiver.email)
 	end
 
-  alias_method :to_json, :as_json
-  def as_json
-    to_json({
-      only: [:message, :read],
+  def display_created
+    created_at.strftime "%Y \/ %m \/ %d"
+  end
+
+  def as_json(options)
+    super( only: [:id, :message, :read],
+      methods: [:created_at],
       include: [
         {
           receiver: { only: [], methods: :name }
@@ -36,6 +39,6 @@ class Feedback < ApplicationRecord
           feedback_traits: { only: :rating, methods: [:name, :indent] }
         }
       ]
-    })
+    )
   end
 end

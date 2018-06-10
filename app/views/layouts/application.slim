@@ -2,6 +2,8 @@ doctype html
 html
   head
     title WakePattern
+    = action_cable_meta_tag
+    = javascript_include_tag 'application'
     = csrf_meta_tags
 
     = stylesheet_link_tag    'application', media: 'all'
@@ -10,12 +12,7 @@ html
     - if WakePattern::Application.assets.find_asset "#{base_assets}.css"
         = stylesheet_link_tag base_assets
 
-    = javascript_include_tag 'application'
 
-    - if WakePattern::Application.assets.find_asset "#{base_assets}.coffee"
-        = javascript_include_tag base_assets
-
-    = content_for :javascript
 
   body
 
@@ -23,3 +20,5 @@ html
     = yield
     / = render 'layouts/footer'
 
+    - if WakePattern::Application.assets.find_asset "#{base_assets}.coffee"
+      = javascript_include_tag base_assets

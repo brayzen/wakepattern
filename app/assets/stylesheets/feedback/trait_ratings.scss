@@ -13,6 +13,16 @@
   .right { max-width: 50%; }
 
   input{ display: none!important; }
+
+  .stars{
+    display: flex;
+
+    .star {
+      polygon{ fill: black; }
+
+      &.blue polygon{ fill: blue; }
+    }
+  }
 }
 
 .subtraits{
@@ -26,6 +36,8 @@
 
 	.star {
     polygon{ fill: black; }
+
+    &.blue{ fill: blue; }
 
     &.hover, &.selected{
       polygon{ fill: #ffd055; }
