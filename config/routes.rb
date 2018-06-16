@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get "email-in", to: 'email_in#landing'
   get 'users/fuzzysearch/:name', to: 'users#fuzzysearch'
   get '/dashboard', to: 'users#dashboard'
+
+  get '/world-statistics', to: 'world_data#statistics'
+
   root 'static#home'
 end
 

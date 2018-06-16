@@ -53,14 +53,6 @@ class User < ApplicationRecord
   end
 
   def received_trait_averages
-    received_feedback_traits.group_by(&:trait_id).map do |trait_id, feedback_traits|
-      count = feedback_traits.count
-      average = feedback_traits.map{ |ft| ft.rating }.inject(:+).to_f / count
-      {
-        name: Trait.find(trait_id).name.to_sym,
-        average: average.round(1),
-        count: count
-      }
-    end
+    FeedbackTrait.averages received_feedback_traits, decimal_place: 1
   end
 end

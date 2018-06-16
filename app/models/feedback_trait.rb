@@ -10,4 +10,15 @@ class FeedbackTrait < ApplicationRecord
     trait.indent
   end
 
+  def self.averages(feedback_traits, decimal_place:)
+    feedback_traits.group_by(&:trait_id).map do |trait_id, fts|
+      count = fts.count
+      average = fts.map{ |ft| ft.rating.to_f }.inject(:+) / count
+      {
+        name: Trait.find(trait_id).name.to_sym,
+        average: average.round(decimal_place),
+        count: count
+      }
+    end
+  end
 end

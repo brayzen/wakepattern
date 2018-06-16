@@ -1,0 +1,53 @@
+.trait_data{
+  padding: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  .trait{
+    display: flex;
+    justify-content: space-between;
+    max-width: 40rem;
+    font-size: 1.8rem;
+    padding: .5rem;
+    margin: 1rem;
+
+    .name{ width: 30%; }
+    .average{
+      position: relative;
+      flex-basis: 3;
+      width: 45%;
+
+      .number{
+        position: relative;
+        color: white;
+        font-weight: bold;
+        z-index: 100;
+        width: 100;
+        text-align: center;
+      }
+
+      .meter{
+        position: absolute;
+        width: 110%;
+        height: 180%;
+        z-index: 10;
+        background: rgba(0, 0, 150, .5);
+        top: -40%;
+        left: -5%;
+        border-radius: .6rem;
+
+        .bar{
+          height: 100%;
+          position: relative;
+          background: rgba(0, 0, 150, 1);
+          border-top-left-radius: .6rem;
+          border-bottom-left-radius: .6rem;
+        }
+      }
+    }
+    .count{ width: 15%; }
+  }
+}
