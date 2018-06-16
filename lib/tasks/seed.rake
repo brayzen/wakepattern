@@ -23,6 +23,17 @@ namespace :seed do
   end
 
   namespace :feedback do
+    task :lots, [:count] => [:environment] do |t, args|
+      (2..100).each do |id|
+        p "Seeding feedback for #{User.find(id).name}"
+        p args[:count]
+        # Rake::Task["seed:feedback:sent"].invoke id, args[:count]
+        sh "rake seed:feedback:sent[#{id},#{args[:count]}]"
+        # Rake::Task["seed:feedback:received"].invoke id, args[:count]
+        sh "rake seed:feedback:received[#{id},#{args[:count]}]"
+      end
+    end
+
     task :sent, [:id, :count] => [:environment] do |t, args|
       sender = User.find args[:id]
       p "seeding sent for #{sender.first_name} #{sender.last_name}"
@@ -45,13 +56,20 @@ namespace :seed do
     def fake_user
       fn = Faker::Name.first_name.downcase
       ln = Faker::Name.last_name.downcase
+      email = "#{fn}.#{ln}@example.com"
+      if User.exists? email: email
+        user = User.find_by email: email
+        p "found a common user #{user.name}"
+        return user
+      end
+
       User.create!({
         first_name: fn,
         last_name: ln,
         password: 'password',
         password_confirmation: 'password',
-        email: "#{fn}.#{ln}@example.com",
-        handle: "#{fn}#{rand(100)}"
+        email: email,
+        handle: "#{fn}-#{ln}#{rand(100)}"
       })
     end
 
@@ -64,7 +82,7 @@ namespace :seed do
     end
 
     def fake_feedback_trait
-      FeedbackTrait.new rating: rand(1..5), trait_id: Trait.all.sample.id
+      FeedbackTrait.new(rating: rand(1..5), trait_id: Trait.all.sample.id)
     end
   end
 end
