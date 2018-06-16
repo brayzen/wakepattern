@@ -13,6 +13,7 @@ class User < ApplicationRecord
 
   has_many :sent_feedbacks, class_name: 'Feedback', foreign_key: :sender_id
   has_many :received_feedbacks, class_name: 'Feedback',  foreign_key: :receiver_id
+  has_many :received_feedback_traits, through: :received_feedbacks, source: :feedback_traits
 
   fuzzily_searchable :name
 
@@ -49,5 +50,17 @@ class User < ApplicationRecord
     }
 
     create attributes
+  end
+
+  def received_trait_averages
+    received_feedback_traits.group_by(&:trait_id).map do |trait_id, feedback_traits|
+      count = feedback_traits.count
+      average = feedback_traits.map{ |ft| ft.rating }.inject(:+).to_f / count
+      {
+        name: Trait.find(trait_id).name.to_sym,
+        average: average.round(1),
+        count: count
+      }
+    end
   end
 end

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get "email-in/:correct", to: 'email_in#landing'
   get "email-in", to: 'email_in#landing'
   get 'users/fuzzysearch/:name', to: 'users#fuzzysearch'
+  get '/dashboard', to: 'users#dashboard'
   root 'static#home'
 end
 

@@ -1,0 +1,9 @@
+.trait_data
+  - @trait_averages.each do |trait_data|
+    .trait
+      .name = trait_data[:name]
+      .average
+        .number = "#{trait_data[:average]} / 5"
+        .meter
+          .bar style="width: #{trait_data[:average] / 5 * 100}%"
+      .count = trait_data[:count]
