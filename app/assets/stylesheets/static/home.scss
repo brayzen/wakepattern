@@ -1,24 +1,125 @@
 @import 'variables';
 
-.slider{
+
+.container{
+  display: flex;
+  justify-content: space-between;
+  top: 2rem;
+
+  .right, .left{
+    flex-basis: 49.5%;
+    min-width: 49.5%;
+    margin-top: 4rem;
+  }
+
+  .right > *{ max-width: 28rem; }
+}
+
+
+
+.or-row{
+  display: flex;
+  align-items: center;
+  margin: 22px 0;
+
+  .or-line{
+    flex: 1 1;
+    height: 1px;
+    background-color: #f3f3f3;
+  }
+
+  .or-text{
+    color: #b4b4b4;
+    margin: 0 8px;
+    font-family: 'Gothic A1', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+}
+
+.oauth{
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.facebook{
+
+  a{ width: 100%; }
+
+  .button{
+    display: flex;
+    justify-content: space-between;
+    border: solid 1px #ccc;
+    position: relative;
+    border-radius: .5rem;
+    width: 100%;
+    padding: .8rem .5rem;
+
+    .f{
+      width: 3rem;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img{ height: 2.5rem; }
+    }
+
+    .text{
+      font-family: 'Gothic A1', sans-serif;
+      font-size: 1.6rem;
+      justify-content: center;
+      width: calc(100% - 3.1rem);
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+form.new_user{
+  width: 100%;
+
+  input{
+    width: 100%;
+    margin: .6rem;
+    padding: .8rem;
+    background: #eef2f3;
+    font-size: 1.3rem;
+    border: none;
+    border-radius: .5rem;
+    box-sizing: border-box;
+  }
+
+  .sign_up{
+    width: 100%;
+
+    input{
+      background: $primary-blue;
+      color: white;
+      font-family: 'Gothic A1', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 1px;
+    }
+  }
+}
+
+.hero_scroller{
   position: relative;
-  left: 100rem;
-  transition: left 3s;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 20rem;
+  overflow: hidden;
+  width: 30rem;
 
-  &.slide{ left: 0; }
+  .hero_text{
+    font-family: 'Gothic A1', sans-serif;
+    font-size: 3.2rem;
+    font-weight: bolder;
+    position: absolute;
+    top: 110%;
+    text-align: center;
+    width: 100%;
+  }
 }
 
-.intro, .feedback_callout {
-  padding: 2rem;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 2rem;
-  font-family: 'Crete Round', serif;
-
-  h2{ font-size: 3.1rem; }
-}
-
-.feedback_callout{
-  background: #ABD5F0;
-  color: white;
-}

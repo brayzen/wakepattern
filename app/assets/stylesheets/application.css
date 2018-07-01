@@ -14,9 +14,7 @@
  *
  *= require basic/reset
  *= require basic/basics
- *= require basic/logo
  *= require basic/fonts
- *= require basic/header
  *= require basic/devise
- *= require header 
+ *= require header
  */

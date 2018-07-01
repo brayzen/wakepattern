@@ -24,7 +24,7 @@ class User < ApplicationRecord
   end
 
   def pre_save
-    handle.downcase!
+    handle.downcase! if handle.present?
   end
 
   def guest?
