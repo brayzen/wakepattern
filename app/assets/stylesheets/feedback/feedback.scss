@@ -1,5 +1,11 @@
 #feedbacks{
-
+  max-width: 48rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  min-height: 50rem;
+  text-transform: capitalize;
 }
 
 .feedback{
