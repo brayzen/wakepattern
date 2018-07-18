@@ -1,13 +1,12 @@
 class User < ApplicationRecord
+  attr_accessor :login
   has_many :authentications, class_name: 'UserAuthentication', dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :omniauthable, :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, authentication_keys: { login: true }
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :handle, uniqueness: true
+  validates :handle, uniqueness: true, format: { without: /@/, message: "handle must not contain '@'" }
 
 	validates_uniqueness_of :email
 
@@ -50,6 +49,12 @@ class User < ApplicationRecord
     }
 
     create attributes
+  end
+
+  def self.find_for_database_authentication(warden_conditions)
+    conditions = warden_conditions.dup
+    login = conditions.delete :login
+    where(conditions).where(["lower(handle) = :value OR lower(email) = :value", { value: login.strip.downcase }]).first
   end
 
   def received_trait_averages

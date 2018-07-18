@@ -11,4 +11,13 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
-Rails.application.config.assets.precompile += %w( static.css feedback.css static.coffee feedback.coffee channels/feedback_channel.js user.css world_datum.css )
+Rails.application.config.assets.precompile += %w(
+  static.css
+  feedback.css
+  static.coffee
+  feedback.coffee
+  channels/feedback_channel.js
+  user.css
+  world_datum.css
+  devise/session.css
+)

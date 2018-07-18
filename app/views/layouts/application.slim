@@ -7,15 +7,15 @@ html
     = csrf_meta_tags
 
     script[
-        async
-        src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js'
+      async
+      src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js'
     ]
 
     = stylesheet_link_tag    'application', media: 'all'
 
     - base_assets = "#{params[:controller].singularize}"
     - if WakePattern::Application.assets.find_asset "#{base_assets}.css"
-        = stylesheet_link_tag base_assets
+      = stylesheet_link_tag base_assets
 
 
 

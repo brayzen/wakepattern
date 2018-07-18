@@ -1,0 +1,19 @@
+.or-row{
+  display: flex;
+  align-items: center;
+  margin: 22px 0;
+
+  .or-line{
+    flex: 1 1;
+    height: 1px;
+    background-color: #f3f3f3;
+  }
+
+  .or-text{
+    color: #b4b4b4;
+    margin: 0 8px;
+    font-family: 'Gothic A1', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+}

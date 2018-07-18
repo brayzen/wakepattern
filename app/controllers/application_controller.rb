@@ -66,8 +66,14 @@ class ApplicationController < ActionController::Base
   end
 
 protected
-	
+
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :handle])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:handle, :email, :password, :password_confirmation])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:login, :password])
+  end
+
+  def after_sign_in_path_for(resource) # (probably user)
+    '/dashboard' || request.env['omniauth.origin'] || root_path
+    # stored_location_for(resource)
   end
 end

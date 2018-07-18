@@ -1,6 +1,7 @@
 #header
   nav.left
-    .logo.nav_link = link_to "Wake Pattern", root_path
+    .logo.nav_link = link_to root_path do
+      = image_tag 'logo.png'
     .nav_link = link_to 'Give Feedback', give_feedback_path
     .nav_link = link_to 'Get Feedback', feedbacks_path
     .nav_link = link_to "Why?", about_path
@@ -11,6 +12,6 @@
     - else
       .nav_link.login = link_to "Login", new_user_session_path
 
-    .nav_link.join = link_to "Join", new_user_registration_path
+    .nav_link.join = link_to "Join", root_path
 
 
