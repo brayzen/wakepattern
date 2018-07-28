@@ -6,7 +6,8 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :feedbacks
-  get "givefeedback(/:handle)", to: 'feedbacks#new', as: :give_feedback
+  get "givefeedback(/:handle)", to: 'feedbacks#trait_new', as: :give_feedback
+  get "trait-givefeedback(/:handle)", to: 'feedbacks#trait_new', as: :trait_give_feedback
   get "feedbacks/new(/:handle)", to: 'feedbacks#new'
   get 'about', to: 'static#about'
   get 'mailer', to: 'static#mail_it'

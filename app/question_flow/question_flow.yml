@@ -1,0 +1,40 @@
+connection:
+  questions: How do you know receiver
+  answers:
+    - friend
+    - work
+    - aquaintance
+
+    - family
+    - friend of friend
+
+  branches:
+
+  default:
+    questions:
+    - 'receiver' is great at 'input'
+    - 'receiver' needs improve 'input'
+    - 'receiver' makes me feel like 'input'
+    - 'receiver' was being 'input'
+
+  aquaintance:
+    inherits: default
+    - 'receiver' look like 'input'
+
+  aquantance:
+    inherits: default
+    questions:
+    - 'receiver' sounds like 'input'
+    - 'receiver' look like 'input'
+
+  work:
+    inherits: default
+    questions:
+    - 'reciever' is usually being 'input'
+    - The most frustrating thing about 'reciever' is 'input'
+    - The most frustrating thing about 'reciever' is that they always 'input'
+    - What I love about 'reciever' is their ----character trait ----
+    - When working with 'reciever' I often feel 'input'
+    -
+  statements:
+
