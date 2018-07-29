@@ -1,0 +1,55 @@
+{
+  "url": "https://gateway.watsonplatform.net/natural-language-understanding/api",
+  "username": "106163f9-586e-47b6-8527-52ddbcbe5176",
+  "password": "IWu5PIJB71O4"
+}
+
+{
+  "url": "https://gateway.watsonplatform.net/natural-language-understanding/api",
+  "username": "4f69fe88-358c-432a-b225-f995bbc06beb",
+  "password": "EUzhTlzgdaeL"
+}
+
+curl -X POST \
+-u "{username}":"{password}" \
+-H "Content-Type: application/json" \
+-d '{
+  "text": "I still have a dream. It is a dream deeply rooted in the American dream. I have a dream that one day this nation will rise up and live out the true meaning of its creed: \"We hold these truths to be self-evident, that all men are created equal.\"",
+  "features": {
+    "sentiment": {},
+    "keywords": {}
+  }
+}' \
+"{url}/v1/analyze?version=2018-03-19"
+
+
+
+
+curl -X POST \
+-u "106163f9-586e-47b6-8527-52ddbcbe5176":"IWu5PIJB71O4" \
+-H "Content-Type: application/json" \
+-d '{
+  "text": "When I'\''m around you, I cringe.  I can'\''t look at you, I just don'\''t want to have anything to do with you.",
+  "features": {
+    "categories": {},
+    "concepts": {},
+    "entities": {
+      "mentions": true,
+      "sentiment": true
+    },
+    "sentiment": {},
+    "emotion": { "targets": ["cringe", "you"] },
+    "keywords": { "emotion": true }
+  }
+}' \
+"https://gateway.watsonplatform.net/natural-language-understanding/api/v1/analyze?version=2018-03-19"
+
+
+
+
+
+
+
+
+
+When I'\''m around you, I cringe.  I can'\''t look at you, I just don'\''t want to have anything to do with you.  I feel like you'\''re manipulative and full of drama. What you really need to do is figure out how to stop being so intrusive and controlling because it won'\''t always be you.  You'\''re people can'\''t stand you and they won'\''t stay around you for very long.

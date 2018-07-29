@@ -20,7 +20,7 @@ class FeedbacksController < ApplicationController
   def show
   end
 
-  def trait_new
+  def new
     @feedback = Feedback.new
     if params[:handle]
       @feedback.receiver = User.find_by_handle params[:handle]
