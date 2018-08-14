@@ -16,6 +16,10 @@ Rails.application.routes.draw do
 
   get '/world-statistics', to: 'world_data#statistics'
 
+  namespace :users do
+    resources :questions
+  end
+
   root 'static#home'
 end
 

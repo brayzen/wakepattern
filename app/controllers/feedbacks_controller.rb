@@ -22,11 +22,12 @@ class FeedbacksController < ApplicationController
 
   def new
     @feedback = Feedback.new
-    if params[:handle]
-      @feedback.receiver = User.find_by_handle params[:handle]
+    @feedback.receiver = if params[:handle]
+      User.find_by_handle params[:handle]
     else
-      @feedback.receiver = User.new
+      User.new
     end
+    @feedback.responses = @feedback.receiver.questions.map{ |q| q.responses.new feedback: @feedback }
     render_not_found if current_user.nil? && @feedback.receiver.nil?
   end
 
@@ -88,6 +89,6 @@ class FeedbacksController < ApplicationController
     end
 
     def feedback_params
-      params.require(:feedback).permit(:message, feedback_traits_attributes: [:trait_id, :rating], receiver_attributes: [:id, :email, :handle])
+      params.require(:feedback).permit(:message, feedback_traits_attributes: [:trait_id, :rating], receiver_attributes: [:id, :email, :handle], responses_attributes: [:question_id, :response])
     end
 end

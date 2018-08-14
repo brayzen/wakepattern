@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180303195748) do
+ActiveRecord::Schema.define(version: 20180812045347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,25 @@ ActiveRecord::Schema.define(version: 20180303195748) do
     t.bigint "receiver_id"
     t.index ["receiver_id"], name: "index_feedbacks_on_receiver_id"
     t.index ["sender_id"], name: "index_feedbacks_on_sender_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "text"
+  end
+
+  create_table "questions_responses", force: :cascade do |t|
+    t.bigint "question_id"
+    t.bigint "feedback_id"
+    t.string "response"
+    t.index ["feedback_id"], name: "index_questions_responses_on_feedback_id"
+    t.index ["question_id"], name: "index_questions_responses_on_question_id"
+  end
+
+  create_table "questions_users", force: :cascade do |t|
+    t.bigint "question_id"
+    t.bigint "user_id"
+    t.index ["question_id"], name: "index_questions_users_on_question_id"
+    t.index ["user_id"], name: "index_questions_users_on_user_id"
   end
 
   create_table "traits", force: :cascade do |t|

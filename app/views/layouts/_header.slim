@@ -5,6 +5,8 @@
     .nav_link = link_to 'Give Feedback', give_feedback_path
     .nav_link = link_to 'Get Feedback', feedbacks_path
     .nav_link = link_to "Why?", about_path
+    - if current_user.present?
+      .nav_link = link_to "My Questions", users_questions_path
 
   nav.right.login-nav
     - if current_user.present?

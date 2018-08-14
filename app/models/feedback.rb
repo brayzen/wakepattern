@@ -3,8 +3,13 @@ class Feedback < ApplicationRecord
 	belongs_to :receiver, class_name: 'User', foreign_key: :receiver_id
   has_many :feedback_traits, inverse_of: :feedback, dependent: :destroy
   has_many :traits, through: :feedback_traits
+  has_many :responses, class_name: 'QuestionsResponse'
+  accepts_nested_attributes_for :responses, allow_destroy: true
+
+  has_many :questions, through: :receiver
   accepts_nested_attributes_for :feedback_traits, allow_destroy: true, reject_if: proc { |attributes| attributes['rating'].blank? }
   accepts_nested_attributes_for :receiver
+  validate :receiver_sender_uniqness
 
 
 	# validate :receiver_check
@@ -40,5 +45,12 @@ class Feedback < ApplicationRecord
         }
       ]
     )
+  end
+
+private
+  def receiver_sender_uniqness
+    if sender_id == receiver_id
+      errors.add :sender, "No sending feedback to yourself. But, What would you say?"
+    end
   end
 end

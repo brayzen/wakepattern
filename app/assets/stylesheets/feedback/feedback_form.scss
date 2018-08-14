@@ -4,6 +4,11 @@
   font-size: 1.8rem;
   width: 100%;
   margin: 0 auto;
+  margin-bottom: 2rem;
+
+  #error_explanation{
+    color: red;
+  }
 
   input, textarea{
     font-size: 1.8rem;
@@ -38,5 +43,21 @@
     min-height: 12rem;
     border: solid 3px #1A9BE5;
     border-radius: 4px;
+  }
+
+  .question{
+    margin-top: 1.5rem;
+
+    p{
+      font-size: 2rem;
+      margin: 0;
+    }
+
+    .response{
+      margin-top: .2rem;
+      border: solid 3px #1A9BE5;
+      border-radius: 4px;
+      width: 100%;
+    }
   }
 }

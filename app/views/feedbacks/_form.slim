@@ -1,7 +1,6 @@
 = form_for @feedback, html: { class: 'feedback_form' } do |f|
   - if @feedback.errors.any?
     #error_explanation
-      h2 = "#{pluralize(@feedback.errors.count, "error")} prohibited this feedback from being saved:"
       ul
         - @feedback.errors.full_messages.each do |message|
           li = message
@@ -11,6 +10,8 @@
       = f.fields_for :receiver do |r|
         = f.text_field :id, value: f.object.receiver.id, class: 'hidden'
     - else
+      / default should be on fields_for
+      - f.object.receiver ||= User.new
       = f.fields_for :receiver do |r|
         = r.text_field :handle, placeholder: 'User Handle', class: 'receiver_handle'
         - if current_user.present?
@@ -18,6 +19,14 @@
           class: 'receiver_email')
 
   = f.text_area :message, class: 'message', placeholder: 'What would you like to say?'
+
+  - if f.object.receiver.persisted?
+    / - f.object.receiver.questions.each{|q|q.responses.new}
+    = f.fields_for :responses do |rf|
+      .question
+        = rf.hidden_field :question_id
+        p = rf.object.question.text
+        = rf.text_area :response, class: 'response'
 
   ul.traits
     - f.object.all_traits

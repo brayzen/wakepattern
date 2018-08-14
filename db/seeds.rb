@@ -13,3 +13,4 @@ bender = User.create!({
 Rake::Task['seed:traits'].invoke
 Rake::Task['seed:feedback:sent'].invoke bender.id
 Rake::Task['seed:feedback:received'].invoke bender.id
+Rake::Task['seed:questions'].invoke

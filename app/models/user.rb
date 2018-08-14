@@ -13,6 +13,9 @@ class User < ApplicationRecord
   has_many :sent_feedbacks, class_name: 'Feedback', foreign_key: :sender_id
   has_many :received_feedbacks, class_name: 'Feedback',  foreign_key: :receiver_id
   has_many :received_feedback_traits, through: :received_feedbacks, source: :feedback_traits
+  has_many :responses, through: :feedbacks
+  has_many :questions_users
+  has_many :questions, through: :questions_users
 
   fuzzily_searchable :name
 

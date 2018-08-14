@@ -1,4 +1,23 @@
 namespace :seed do
+  task questions: :environment do
+    return if Question.where(text: 'On a scale of 1-10 rank my trustworthiness').present?
+    brian = User.where(first_name: 'Brian', last_name: 'Ray').first
+    brian ||= User.create first_name: 'Brian', last_name: 'Ray', email: 'brian.ray.biz@gmail.com', handle: 'brayzen', password: 'dingle_berry'
+    [
+      "On a scale of 1-10 rank my trustworthiness",
+      "On a scale of 1-10 rank my appearance",
+      "On a scale of 1-10 rank my communication",
+      "Brian was being _______?",
+      "What feedback could you give me to make me more effective",
+      "How likely are you to use Wake Pattern for yourself",
+      "How well did you understand what Wake Pattern is about?",
+      "What feedback could you give me to make Wake Pattern more effective?"
+    ].each_with_index do |q, i|
+      puts "creating questions: ", q
+      question = brian.questions.create text: q
+    end
+  end
+
   task traits: :environment do
     p 'seeding traits'
     # hard set the id for consistency
