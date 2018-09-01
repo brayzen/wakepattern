@@ -1,6 +1,6 @@
 class StaticController < ApplicationController
   def home
-  	@feedback = Feedback.new
+    redirect_to give_feedback_path(handle: params[:handle]) if params[:handle].present?
   	header[:background] = header[:logo] = false
   end
 
@@ -20,7 +20,7 @@ class StaticController < ApplicationController
 
 	def mission
 	end
-	
+
   def correct_email_land
 	end
 

@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     resources :questions
   end
 
+  # last before root
+  get "(:handle)", to: 'static#home', as: :root_handle
   root 'static#home'
 end
 
