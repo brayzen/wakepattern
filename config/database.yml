@@ -1,26 +1,3 @@
-# default: &default
-#   adapter: postgresql
-#   encoding: unicode
-#   host: <%= ENV["PG_HOST"] %>
-#   password:
-#   pool: 5
-
-# development:
-#   <<: *default
-#   username: <%= ENV["LOCAL_PG_ROLE"] %>
-#   database: wp_dev
-
-# test:
-#   <<: *default
-#   username: <%= ENV["LOCAL_PG_ROLE"] %>
-#   database: wp_test
-
-# production:
-#   <<: *default
-#   username: <%= ENV["LOCAL_PG_ROLE"] %>
-#   password: <%= ENV["POSTGRES_PASSWORD"] %>
-#   database: wp_prod
-
 default: &default
   adapter: postgresql
   encoding: unicode
