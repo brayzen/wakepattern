@@ -19,8 +19,8 @@ test:
 
 production:
   <<: *default
-  database: <%= ENV['RDS_DB_NAME'] %>
-  username: <%= ENV['RDS_USERNAME'] %>
-  password: <%= ENV['RDS_PASSWORD'] %>
-  host: <%= ENV['RDS_HOSTNAME'] %>
-  port: <%= ENV['RDS_PORT'] %>
+  database: WakePatternProd
+  username: WakePattern
+  password: futurama543
+  host: wakepatternprod.cvyu4ku1saus.us-west-2.rds.amazonaws.com
+  port: 5432
