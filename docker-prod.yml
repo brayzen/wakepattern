@@ -6,7 +6,7 @@ services:
       - wakepatternprod.cvyu4ku1saus.us-west-2.rds.amazonaws.com
   web:
     build: .
-    command: bundle exec RAILS_ENV=production rails s -p 80 -b '0.0.0.0'
+    command: bundle exec rails s -p 80 -b '0.0.0.0'
     volumes:
       - .:/myapp
     ports:
