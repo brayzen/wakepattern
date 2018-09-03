@@ -1,5 +1,7 @@
 version: '3'
 services:
+  environment:
+    RAILS_ENV=production
   db:
     image: postgres
     volumes:
