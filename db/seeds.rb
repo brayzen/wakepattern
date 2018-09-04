@@ -1,4 +1,3 @@
-AuthenticationProvider.create name: 'facebook'
 
 p 'creating bender'
 bender = User.create!({
@@ -10,6 +9,7 @@ bender = User.create!({
   handle: 'bender'
 })
 
+Rake::Task['seed:auth_provider'].invoke
 Rake::Task['seed:traits'].invoke
 Rake::Task['seed:feedback:sent'].invoke bender.id
 Rake::Task['seed:feedback:received'].invoke bender.id

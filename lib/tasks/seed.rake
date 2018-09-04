@@ -1,4 +1,8 @@
 namespace :seed do
+  task auth_provider: :environment do
+    AuthenticationProvider.first_or_create name: 'facebook'
+  end
+
   task questions: :environment do
     return if Question.where(text: 'On a scale of 1-10 rank my trustworthiness').present?
     brian = User.where(first_name: 'Brian', last_name: 'Ray').first
