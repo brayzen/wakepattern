@@ -27,6 +27,10 @@ gem 'fuzzily'
 gem 'http'
 gem 'vuejs-rails'
 
+group :production do
+  gem 'redis-rails'
+end
+
 group :development, :test do
   gem 'factory_bot_rails'
   gem 'pry-byebug'
