@@ -6,6 +6,16 @@
   padding: 2rem;
   min-height: 50rem;
   text-transform: capitalize;
+
+  ol {
+    width: 100%;
+  }
+
+  .feedback_nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .feedback{
@@ -21,17 +31,24 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
+    align-items: center;
   }
 
+  .stamp {
+    font-size: 1rem;
+  }
+  
   .recipient{
     font-size: 2.2rem;
     font-weight: bold;
   }
 
   .message{
-    padding: 1rem;
-    background: #ccc;
-    border-radius: 1rem;
+    width: 100%;
+    padding: 2rem 0;
+    border-top: 2px solid  #ccc;
+    border-bottom: 2px solid  #ccc;
+    /*     border-radius: 1rem; */
     margin: 1rem auto;
   }
 }

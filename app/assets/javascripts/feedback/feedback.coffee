@@ -1,14 +1,22 @@
 Vue.component 'feedback',
   props: ['feedback']
+  data: ->
+      return {
+        cfeedback: Object.assign(
+          {},
+          this.feedback,
+          {created_at: window.localStamp(this.feedback.created_at)}
+        )
+      }
   template: """
     <div class='feedback'>
       <div class='head'>
         <h3 class='recipient'>
-          To: {{ feedback.receiver.name }}
+          {{ '@' + feedback.receiver.handle }}
         </h3>
 
-        <div class='date'>
-          {{ feedback.created_at }}
+        <div class='stamp'>
+          {{ cfeedback.created_at }}
         </div>
       </div>
       <div class="message">

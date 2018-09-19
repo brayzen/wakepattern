@@ -1,17 +1,23 @@
 #feedbacks.container
   nav.feedback_nav
-    button.get.sent[
-      @click = "get_feedbacks('sent')"
-    ] Sent
-    button.get.received[
-      @click = "get_feedbacks('received')"
-    ] Received
-    button.sort.name[
-      @click = "sort('receiver.name')"
-    ] Name
-    button.sort.date[
-      @click = "sort('created_at')"
-    ] Date
+    .get
+      = "Messages"
+      .buttons
+        button.received[
+          @click = "get_feedbacks('received')"
+        ] Received
+        button.sent[
+          @click = "get_feedbacks('sent')"
+        ] Sent
+    .sort
+      = "Sort"
+      .buttons
+        button.name[
+          @click = "sort('receiver.name')"
+        ] Name
+        button.date[
+            @click = "sort('created_at')"
+        ] Date
 
   ol
     feedback[

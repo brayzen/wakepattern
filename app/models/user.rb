@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   validates :handle, uniqueness: true, format: { without: /@/, message: "handle must not contain '@'" }
 
-	validates_uniqueness_of :email
+  validates_uniqueness_of :email
 
   has_many :sent_feedbacks, class_name: 'Feedback', foreign_key: :sender_id
   has_many :received_feedbacks, class_name: 'Feedback',  foreign_key: :receiver_id
