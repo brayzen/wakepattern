@@ -1,9 +1,21 @@
 version: '3'
 services:
   db:
-    image: postgres
+    image: gcr.io/cloudsql-docker/gce-proxy:1.11
+    command: ["/cloud_sql_proxy", "--dir=/cloudsql",
+          "-instances=prefab-environs-131319:us-west1:wp-db-1=tcp:0.0.0.0:5432",
+          "-credential_file=/config"]
+    ports:
+      - 5432:5432
     volumes:
-      - wakepatternprod.cvyu4ku1saus.us-west-2.rds.amazonaws.com
+      - /cloudsql:/cloudsql
+      - ./credentials.json:/config
+    restart: always
+
+  redis:
+    image: redis:alpine
+    restart: always
+
   web:
     environment:
       - RAILS_ENV=production
@@ -13,5 +25,6 @@ services:
       - .:/myapp
     ports:
       - "80:80"
+    restart: always
     depends_on:
       - db

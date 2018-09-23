@@ -20,7 +20,7 @@ test:
 production:
   <<: *default
   database: WakePatternProd
-  username: WakePattern
+  username: postgres
   password: futurama543
-  host: wakepatternprod.cvyu4ku1saus.us-west-2.rds.amazonaws.com
+  host: db #wakepatternprod.cvyu4ku1saus.us-west-2.rds.amazonaws.com
   port: 5432
