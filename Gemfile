@@ -21,13 +21,14 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'nokogiri'
 gem 'dotenv-rails'
-gem 'aws-sdk-ses'
+#gem 'aws-sdk-ses'
 gem 'pg', '~> 0.18'
 gem 'fuzzily'
 gem 'http'
 gem 'vuejs-rails'
 
 group :production do
+  gem 'redis', '~> 3.0'
   gem 'redis-rails'
 end
 
