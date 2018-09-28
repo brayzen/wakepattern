@@ -7,6 +7,12 @@
         = @feedback.created_at
     .message
       = @feedback.message
+    - @feedback.responses.each do |response|
+      .response
+        .question
+          = response.question.text
+        .answer
+          = response.response 
     - @feedback.feedback_traits.each do |ftrait|
       .trait data-indent="#{ftrait.trait.indent}"
         .trait_name

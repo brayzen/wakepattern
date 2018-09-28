@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+    @questions = current_user.questions
     @trait_averages = current_user.received_trait_averages.sort_by{ |td| td[:name] }
   end
 end

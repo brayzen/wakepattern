@@ -7,9 +7,9 @@ class FeedbacksController < ApplicationController
       format.html
       format.json do
         @feedbacks = if params[:type] == 'sent'
-          current_or_guest_user.sent_feedbacks.includes(:receiver, feedback_traits: [:trait])
+          current_or_guest_user.sent_feedbacks.includes(:receiver, feedback_traits: [:trait]).order(created_at: :desc)
         else
-          current_or_guest_user.received_feedbacks.includes(:sender, feedback_traits: [:trait])
+          current_or_guest_user.received_feedbacks.includes(:sender, feedback_traits: [:trait]).order(created_at: :desc)
         end#.sort_by(:created_at).last 10
 
         return ActionCable.server.broadcast 'feedbacks', feedbacks: @feedbacks.to_json
@@ -27,8 +27,12 @@ class FeedbacksController < ApplicationController
     else
       User.new
     end
-    @feedback.responses = @feedback.receiver.questions.map{ |q| q.responses.new feedback: @feedback }
-    render_not_found if current_user.nil? && @feedback.receiver.nil?
+
+    if current_user.nil? && @feedback.receiver.nil?
+      render_not_found
+    else
+      @feedback.responses = @feedback.receiver.questions.map{ |q| q.responses.new feedback: @feedback }
+    end
   end
 
   def edit
@@ -52,6 +56,8 @@ class FeedbacksController < ApplicationController
       User.find_by_handle rp[:handle]
     end
 
+    @feedback.receiver = User.new(rp) if @feedback.receiver.nil?
+    
     respond_to do |format|
       if @feedback.save
         format.html { redirect_to @feedback }

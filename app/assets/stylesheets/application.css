@@ -17,4 +17,9 @@
  *= require basic/fonts
  *= require basic/devise
  *= require header
+ *= require questions
  */
+
+* {
+  box-sizing: border-box;
+}

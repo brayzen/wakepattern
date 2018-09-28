@@ -1,5 +1,5 @@
 #feedbacks{
-  max-width: 48rem;
+  /*   max-width: 48rem; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,6 +18,15 @@
   }
 }
 
+a.feedback-wrap {
+  display: block;
+  
+  &:hover {
+    .feedback {
+      background: #eee;
+    }
+  }
+}
 .feedback{
   font-size: 1.6rem;
   border-radius: 1.5rem;
@@ -26,7 +35,6 @@
   padding: 2rem;
   display: flex;
   flex-direction: column;
-
   .head{
     display: flex;
     width: 100%;
@@ -43,12 +51,21 @@
     font-weight: bold;
   }
 
-  .message{
+  .message,
+  .response {
     width: 100%;
     padding: 2rem 0;
     border-top: 2px solid  #ccc;
     border-bottom: 2px solid  #ccc;
     /*     border-radius: 1rem; */
     margin: 1rem auto;
+    .question {
+      font-weight: bold;
+    }
+    .answer {
+      margin-top: 1rem;
+    }
   }
+
+
 }
