@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180812045347) do
+ActiveRecord::Schema.define(version: 20181006053355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 20180812045347) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_name_on_authentication_providers"
+  end
+
+  create_table "contexts", force: :cascade do |t|
+    t.string "name"
+    t.string "handle"
+    t.boolean "default"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_contexts_on_user_id"
   end
 
   create_table "feedback_traits", force: :cascade do |t|
@@ -58,6 +68,8 @@ ActiveRecord::Schema.define(version: 20180812045347) do
   create_table "questions_users", force: :cascade do |t|
     t.bigint "question_id"
     t.bigint "user_id"
+    t.bigint "context_id"
+    t.index ["context_id"], name: "index_questions_users_on_context_id"
     t.index ["question_id"], name: "index_questions_users_on_question_id"
     t.index ["user_id"], name: "index_questions_users_on_user_id"
   end
@@ -111,6 +123,8 @@ ActiveRecord::Schema.define(version: 20180812045347) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "contexts", "users"
   add_foreign_key "feedbacks", "users", column: "receiver_id"
   add_foreign_key "feedbacks", "users", column: "sender_id"
+  add_foreign_key "questions_users", "contexts"
 end

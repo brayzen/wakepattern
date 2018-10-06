@@ -7,6 +7,9 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+    context = params[:context] || 'default'
+    @context = current_user.contexts.find_by(handle: context)
+    @contexts = current_user.contexts
     @questions = current_user.questions
     @trait_averages = current_user.received_trait_averages.sort_by{ |td| td[:name] }
   end

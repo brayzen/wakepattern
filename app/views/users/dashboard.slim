@@ -1,3 +1,6 @@
+ul class=(["nav", "nav-tabs", "contexts"])
+  = render partial: 'users/context', collection: @contexts, locals: { active: @context.handle }
+
 .questions
   h2 Questions
   = render @questions

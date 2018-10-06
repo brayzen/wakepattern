@@ -19,6 +19,7 @@
  *= require header
  *= require questions
  */
+@import 'bootstrap';
 
 * {
   box-sizing: border-box;
