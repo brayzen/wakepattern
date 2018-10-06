@@ -1,0 +1,9 @@
+= link_to feedback, class: "feedback-wrap" do
+  .feedback
+    .head
+      .recipient
+        = "@#{feedback.receiver.handle}"
+      .stamp
+        = feedback.created_at
+    .message
+      = feedback.message

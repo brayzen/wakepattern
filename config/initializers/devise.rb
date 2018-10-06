@@ -253,7 +253,7 @@ Devise.setup do |config|
   config.omniauth :facebook,
     Rails.application.secrets.facebook_app_id,
     Rails.application.secrets.facebook_secret,
-    callback_url: 'http://localhost:3000/users/auth/facebook/callback',
+    callback_url: '/users/auth/facebook/callback',
     scope: 'email'
 
   # ==> Warden configuration
