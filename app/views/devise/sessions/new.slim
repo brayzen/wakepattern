@@ -1,15 +1,5 @@
 .center
   h3 Sign in
-  .oauth.facebook = link_to user_facebook_omniauth_authorize_path do
-      .button
-        .f = image_tag image_path('facebook_f.png')
-        .text Login with Facebook
-
-  .or-row
-    .or-line
-    .or-text Or
-    .or-line
-
   .container.devise
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       = devise_error_messages!
