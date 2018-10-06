@@ -5,12 +5,18 @@ class FeedbacksController < ApplicationController
   def index
     if params[:type] == 'sent'
       @feedbacks = current_or_guest_user.sent_feedbacks.includes(:receiver, feedback_traits: [:trait])
-      @feedbacks.order(created_at: :desc)
-      @feedbacks.order(name: :asc) if params[:sort] == 'name'
+      if params[:sort] == 'name'
+        @feedbacks = @feedbacks.includes(:receiver).order('users.handle')
+      else
+        @feedbacks = @feedbacks.order(created_at: :desc)
+      end
     else
       @feedbacks = current_or_guest_user.received_feedbacks.includes(:sender, feedback_traits: [:trait])
-      @feedbacks.order(created_at: :desc)
-      @feedbacks.order(name: :asc) if params[:sort] == 'name'
+      if params[:sort] == 'name'
+        @feedbacks = @feedbacks.includes(:receiver).order('users.handle')
+      else
+        @feedbacks = @feedbacks.order(created_at: :desc)
+      end
     end
   end
 
