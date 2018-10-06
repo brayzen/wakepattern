@@ -68,7 +68,7 @@ class FeedbacksController < ApplicationController
     @feedback.receiver = User.new(rp) if @feedback.receiver.nil?
     
     if @feedback.save
-      redirect_to @feedback 
+      redirect_to "/signup_opp" 
     else
       render :new 
     end

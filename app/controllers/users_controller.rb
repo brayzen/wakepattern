@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, except: :fuzzysearch
+  before_action :authenticate_user!, except: [:fuzzysearch, :signup_opportunity]
 
   def fuzzysearch
     @users = User.find_by_fuzzy_name(params[:name], limit: 10).map{ |u| u.name }
@@ -26,4 +26,9 @@ class UsersController < ApplicationController
     @trait_averages = current_user.received_trait_averages.sort_by{ |td| td[:name] }
     @url = "www.wakepattern.com/#{current_user.handle}/#{@context.handle}"
   end
+
+	def signup_opportunity
+		binding.pry
+		@user
+	end
 end
