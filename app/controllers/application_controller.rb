@@ -1,6 +1,12 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def set_receiver(user_obj)
+		session[:receiver] = user_obj if user_obj
+		@receiver = session[:receiver] if session[:receiver]
+		@receiver ||= 'them' 
+	end 
+
   include ApplicationHelper
   protect_from_forgery with: :exception
 

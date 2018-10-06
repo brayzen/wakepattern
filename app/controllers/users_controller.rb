@@ -27,8 +27,8 @@ class UsersController < ApplicationController
     @url = "www.wakepattern.com/#{current_user.handle}/#{@context.handle}"
   end
 
+
 	def signup_opportunity
-		binding.pry
-		@user
+		@receiver = session[:receiver]
 	end
 end

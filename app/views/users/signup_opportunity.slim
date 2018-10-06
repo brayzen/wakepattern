@@ -1,7 +1,7 @@
--  if !@user 
+-  if !@receiver 
   - first_name = 'them' 
 - else 
-  - first_name = @user.first_name 
+  - first_name = @receiver["first_name"]
 
 h2 Thank you for leaving #{first_name} feedback!  Your honest opinion is what delivers the true impact that changes behavior.  Thank you from us for making that contribution.
 
