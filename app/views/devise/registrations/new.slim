@@ -5,7 +5,6 @@
   .field
     = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email'
   .field
-    em = @minimum_password_length if @minimum_password_length
     = f.password_field :password, autocomplete: "off", placeholder: 'Password'
   .field
     = f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Password confirmation'
