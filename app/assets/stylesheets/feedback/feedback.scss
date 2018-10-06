@@ -1,13 +1,40 @@
+a.btn {
+  background: #1a9be5;
+  color: #fff;
+  padding: 5px 20px;
+  cursor: pointer;
+  margin: 2px;
+}
+
 #feedbacks{
-  max-width: 48rem;
+  /*   max-width: 48rem; */
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 2rem;
   min-height: 50rem;
   text-transform: capitalize;
+
+  ol {
+    width: 100%;
+  }
+
+  .feedback_nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
+a.feedback-wrap {
+  display: block;
+  
+  &:hover {
+    .feedback {
+      background: #eee;
+    }
+  }
+}
 .feedback{
   font-size: 1.6rem;
   border-radius: 1.5rem;
@@ -16,22 +43,37 @@
   padding: 2rem;
   display: flex;
   flex-direction: column;
-
   .head{
     display: flex;
     width: 100%;
     justify-content: space-between;
+    align-items: center;
   }
 
+  .stamp {
+    font-size: 1rem;
+  }
+  
   .recipient{
     font-size: 2.2rem;
     font-weight: bold;
   }
 
-  .message{
-    padding: 1rem;
-    background: #ccc;
-    border-radius: 1rem;
+  .message,
+  .response {
+    width: 100%;
+    padding: 2rem 0;
+    border-top: 2px solid  #ccc;
+    border-bottom: 2px solid  #ccc;
+    /*     border-radius: 1rem; */
     margin: 1rem auto;
+    .question {
+      font-weight: bold;
+    }
+    .answer {
+      margin-top: 1rem;
+    }
   }
+
+
 }

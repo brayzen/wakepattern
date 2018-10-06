@@ -11,6 +11,7 @@
   }
 
   input, textarea{
+    margin: 10px 0px;
     font-size: 1.8rem;
     border: none;
     background: $background-color;
@@ -23,6 +24,12 @@
       &:focus{ outline: none; }
     }
 
+    &[type="submit"]{
+      background: #1a9be5;
+      color: #fff;
+      padding: 5px 20px;
+      cursor: pointer;
+    }
   }
 
   .receiver_handle{

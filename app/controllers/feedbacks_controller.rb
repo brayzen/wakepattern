@@ -3,16 +3,19 @@ class FeedbacksController < ApplicationController
   before_action :set_feedback, only: [:show, :edit, :update, :destroy]
 
   def index
-    respond_to do |format|
-      format.html
-      format.json do
-        @feedbacks = if params[:type] == 'received'
-          current_or_guest_user.received_feedbacks.includes(:sender, feedback_traits: [:trait])
-        else
-          current_or_guest_user.sent_feedbacks.includes(:receiver, feedback_traits: [:trait])
-        end#.sort_by(:created_at).last 10
-
-        return ActionCable.server.broadcast 'feedbacks', feedbacks: @feedbacks.to_json
+    if params[:type] == 'sent'
+      @feedbacks = current_or_guest_user.sent_feedbacks.includes(:receiver, feedback_traits: [:trait])
+      if params[:sort] == 'name'
+        @feedbacks = @feedbacks.includes(:receiver).order('users.handle')
+      else
+        @feedbacks = @feedbacks.order(created_at: :desc)
+      end
+    else
+      @feedbacks = current_or_guest_user.received_feedbacks.includes(:sender, feedback_traits: [:trait])
+      if params[:sort] == 'name'
+        @feedbacks = @feedbacks.includes(:receiver).order('users.handle')
+      else
+        @feedbacks = @feedbacks.order(created_at: :desc)
       end
     end
   end
@@ -27,8 +30,12 @@ class FeedbacksController < ApplicationController
     else
       User.new
     end
-    @feedback.responses = @feedback.receiver.questions.map{ |q| q.responses.new feedback: @feedback }
-    render_not_found if current_user.nil? && @feedback.receiver.nil?
+
+    if current_user.nil? && @feedback.receiver.nil?
+      render_not_found
+    else
+      @feedback.responses = @feedback.receiver.questions.map{ |q| q.responses.new feedback: @feedback }
+    end
   end
 
   def edit
@@ -52,35 +59,26 @@ class FeedbacksController < ApplicationController
       User.find_by_handle rp[:handle]
     end
 
-    respond_to do |format|
-      if @feedback.save
-        format.html { redirect_to @feedback }
-        format.json { render :show, status: :created, location: @feedback }
-      else
-        format.html { render :new }
-        format.json { render json: @feedback.errors, status: :unprocessable_entity }
-      end
+    @feedback.receiver = User.new(rp) if @feedback.receiver.nil?
+    
+    if @feedback.save
+      redirect_to @feedback 
+    else
+      render :new 
     end
   end
 
   def update
-    respond_to do |format|
-      if @feedback.update(feedback_params)
-        format.html { redirect_to @feedback }
-        format.json { render :show, status: :ok, location: @feedback }
-      else
-        format.html { render :edit }
-        format.json { render json: @feedback.errors, status: :unprocessable_entity }
-      end
+    if @feedback.update(feedback_params)
+      redirect_to @feedback 
+    else
+      render :edit 
     end
   end
 
   def destroy
     @feedback.destroy
-    respond_to do |format|
-      format.html { redirect_to feedbacks_url }
-      format.json { head :no_content }
-    end
+    redirect_to feedbacks_url
   end
 
   private

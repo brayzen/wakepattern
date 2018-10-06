@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   validates :handle, uniqueness: true, format: { without: /@/, message: "handle must not contain '@'" }
 
-	validates_uniqueness_of :email
+  validates_uniqueness_of :email
 
   has_many :sent_feedbacks, class_name: 'Feedback', foreign_key: :sender_id
   has_many :received_feedbacks, class_name: 'Feedback',  foreign_key: :receiver_id
@@ -16,7 +16,8 @@ class User < ApplicationRecord
   has_many :responses, through: :feedbacks
   has_many :questions_users
   has_many :questions, through: :questions_users
-
+#  accepts_nested_attributes_for :questions, allow_destroy: true
+  
   fuzzily_searchable :name
 
   before_save :pre_save, unless: Proc.new{ |user| user.guest? }

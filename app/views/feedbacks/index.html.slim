@@ -1,17 +1,15 @@
 #feedbacks.container
   nav.feedback_nav
-    button.get.sent[
-      @click = "get_feedbacks('sent')"
-    ] Sent
-    button.get.received[
-      @click = "get_feedbacks('received')"
-    ] Received
-    button.sort.name[
-      @click = "sort('receiver.name')"
-    ] Name
-    button.sort.date[
-      @click = "sort('created_at')"
-    ] Date
+    .get
+      = "Messages"
+      .buttons
+        = link_to "Received", url_for(params.permit(:type, :sort).merge(type: "received", sort: params[:sort])), class: 'btn'
+        = link_to "Sent", params.permit(:type, :sort).merge(type: "sent", sort: params[:sort]), class: 'btn'
+    .sort
+      = "Sort"
+      .buttons
+        = link_to "Name", params.permit(:type, :sort).merge(type: params[:type], sort: "name"), class: 'btn'
+        = link_to "Date", params.permit(:type, :sort).merge(type: params[:type], sort: "date"), class: 'btn'
 
   ol
     feedback[
@@ -19,3 +17,4 @@
       v-bind:feedback = "feedback"
       v-bind:key = "feedback.id"
     ]
+    = render @feedbacks

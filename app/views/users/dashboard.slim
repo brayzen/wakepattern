@@ -1,1 +1,9 @@
+.questions
+  h2 Questions
+  = render @questions
+  .question
+    = form_tag '/questions', method: 'POST' do
+      = text_field_tag 'question[text]', nil, placeholder: "New Question", class: 'question-text'
+      = submit_tag "save", class: 'button'
+
 = render 'traits/trait_averages'

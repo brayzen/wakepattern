@@ -8,14 +8,4 @@
 
   .right
     h3 Sign Up for Free
-    .oauth.facebook = link_to user_facebook_omniauth_authorize_path do
-        .button
-          .f = image_tag image_path('facebook_f.png')
-          .text Sign up free with Facebook
-
-    .or-row
-      .or-line
-      .or-text Or
-      .or-line
-
     = render template: 'devise/registrations/new'
