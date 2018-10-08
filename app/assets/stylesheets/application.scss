@@ -18,8 +18,9 @@
  *= require basic/devise
  *= require header
  *= require questions
+ *= require dashboard
  */
-@import 'bootstrap';
+@import "bootstrap";
 
 * {
   box-sizing: border-box;

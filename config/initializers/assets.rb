@@ -20,4 +20,6 @@ Rails.application.config.assets.precompile += %w(
   user.css
   world_datum.css
   devise/session.css
+  context.css
+  context.js
 )

@@ -8,9 +8,20 @@ class UsersController < ApplicationController
 
   def dashboard
     context = params[:context] || 'default'
-    @context = current_user.contexts.find_by(handle: context)
+    if context == 'new'
+      @context = Context.new()
+    else
+      @context = current_user.contexts.find_by(handle: context)
+    end
     @contexts = current_user.contexts
-    @questions = current_user.questions
+    @questions = @context.questions_users.where(deleted: [nil, false]).to_a.map { |qu| qu.question }.compact
+    logger.info @questions
+    (0..4).each do |i|
+      if @questions[i].nil?
+        @questions << Question.new
+      end
+    end
     @trait_averages = current_user.received_trait_averages.sort_by{ |td| td[:name] }
+    @url = "www.wakepattern.com/#{current_user.handle}/#{@context.handle}"
   end
 end
