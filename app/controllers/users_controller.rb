@@ -7,8 +7,10 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-    context = params[:context] || 'default'
-    if context == 'new'
+    context = params[:context]
+    if context.nil?
+      @context = current_user.contexts.find_by(default: true)
+    elsif context == 'new'
       @context = Context.new()
     else
       @context = current_user.contexts.find_by(handle: context)
