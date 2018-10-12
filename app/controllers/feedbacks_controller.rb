@@ -35,11 +35,15 @@ class FeedbacksController < ApplicationController
       render_not_found
     else
       @feedback.receiver = @user
-      if params[:context]
-        @context = @user.contexts.find_by(handle: params[:context])
+      context = params[:context]
+      if context == 'new' || @user.contexts.length == 0
+        @context = Context.new()
+      elsif context.nil?
+        @context = current_user.contexts.find_by(default: true)
       else
-        @context = @user.contexts.find_by(default: true)
+        @context = current_user.contexts.find_by(handle: context)
       end
+
       @feedback.responses = @context.questions.map{ |q| q.responses.new feedback: @feedback }
     end
   end
