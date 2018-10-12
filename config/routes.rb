@@ -7,13 +7,14 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :feedbacks
   resources :questions
-  get "givefeedback(/:handle)", to: 'feedbacks#new', as: :give_feedback
-  get "feedbacks/new(/:handle)", to: 'feedbacks#new'
+  resources :contexts
+  get "givefeedback(/:handle(/:context))", to: 'feedbacks#new', as: :give_feedback
+  get "feedbacks/new(/:handle(/:context))", to: 'feedbacks#new'
   get 'about', to: 'static#about'
   get "email-in/:correct", to: 'email_in#landing'
   get "email-in", to: 'email_in#landing'
   get 'users/fuzzysearch/:name', to: 'users#fuzzysearch'
-  get '/dashboard', to: 'users#dashboard'
+  get '/dashboard(/:context)', to: 'users#dashboard', as: :dashboard
 
   get '/world-statistics', to: 'world_data#statistics'
 

@@ -26,6 +26,7 @@ gem 'pg', '~> 0.18'
 gem 'fuzzily'
 gem 'http'
 gem 'vuejs-rails'
+gem 'bootstrap'
 
 group :production do
   gem 'redis', '~> 3.0'

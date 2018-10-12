@@ -23,9 +23,10 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    question = Question.find(params[:id])
-    question.destroy
-    redirect_to dashboard_path
+    question = QuestionsUser.find(params[:id])
+    context = question.context
+    question.update_attribute(:deleted, true)
+    redirect_to dashboard_path(context.handle)
   end
 
   private

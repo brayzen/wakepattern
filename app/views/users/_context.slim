@@ -1,0 +1,2 @@
+li class=(["nav-item"])
+  = link_to context.name, dashboard_path(context.handle), class: "nav-link context-tab" + (active == context.handle ? " active" : '')

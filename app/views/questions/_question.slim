@@ -1,6 +1,4 @@
 .question
-  = form_for question do |f|
-    = f.hidden_field :id
-    = f.text_field :text, placeholder: "Question", class: "question-text"
-    = f.submit :save, class: 'button'
-    = link_to 'delete', question_path(question), method: :delete, class: 'button delete', data: { confirm: "Are you sure you want to delete this question?" }
+  = f.hidden_field :id
+  = f.text_field :text, placeholder: "Question", class: "question-text"
+  = link_to 'delete', question_path(question), method: :delete, class: 'button delete', data: { confirm: "Are you sure you want to delete this question?" } if !question.id.nil?

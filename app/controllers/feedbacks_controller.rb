@@ -25,16 +25,22 @@ class FeedbacksController < ApplicationController
 
   def new
     @feedback = Feedback.new
-    @feedback.receiver = if params[:handle]
-      User.find_by_handle params[:handle]
+    if params[:handle]
+      @user = User.find_by_handle params[:handle]
     else
-      User.new
+      @user = User.new
     end
 
-    if current_user.nil? && @feedback.receiver.nil?
+    if current_user.nil? && @user.nil?
       render_not_found
     else
-      @feedback.responses = @feedback.receiver.questions.map{ |q| q.responses.new feedback: @feedback }
+      @feedback.receiver = @user
+      if params[:context]
+        @context = @user.contexts.find_by(handle: params[:context])
+      else
+        @context = @user.contexts.find_by(default: true)
+      end
+      @feedback.responses = @context.questions.map{ |q| q.responses.new feedback: @feedback }
     end
   end
 

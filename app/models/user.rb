@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :received_feedbacks, class_name: 'Feedback',  foreign_key: :receiver_id
   has_many :received_feedback_traits, through: :received_feedbacks, source: :feedback_traits
   has_many :responses, through: :feedbacks
+  has_many :contexts
   has_many :questions_users
   has_many :questions, through: :questions_users
 #  accepts_nested_attributes_for :questions, allow_destroy: true

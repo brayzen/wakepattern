@@ -15,6 +15,8 @@
 //  require ./channels
 //= require cable
 //= require ratings
+//= require popper
+//= require bootstrap
 
 // Update all timestamps fo clients local time
 window.localStamp = function(stamp) {
