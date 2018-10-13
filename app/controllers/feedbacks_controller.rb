@@ -40,6 +40,7 @@ class FeedbacksController < ApplicationController
         @context = Context.new()
       elsif context.nil?
         @context = @user.contexts.find_by(default: true)
+        @context = @user.contexts.first if @context.nil?
       else
         @context = @user.contexts.find_by(handle: context)
       end
