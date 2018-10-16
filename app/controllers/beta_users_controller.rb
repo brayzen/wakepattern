@@ -17,7 +17,8 @@ class BetaUsersController < ApplicationController
 	  if beta_user.save
 			render :show
 		else
-			render :new 
+			flash[:notice] = beta_user.errors.full_messages.to_sentence
+			redirect_to '/signup_opp' 
 		end
   end	
 	

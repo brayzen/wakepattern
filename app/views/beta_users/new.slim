@@ -1,3 +1,7 @@
+
+.flash
+  - if flash[:notice]
+    = flash[:notice]
 .container
   - if !@receiver 
     - first_name = 'them' 
