@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   get "email-in", to: 'email_in#landing'
   get 'users/fuzzysearch/:name', to: 'users#fuzzysearch'
   get '/dashboard(/:context)', to: 'users#dashboard', as: :dashboard
-	get '/signup_opp', to: 'users#signup_opportunity'
+	get '/signup_opp', to: 'beta_users#new'
+	post '/beta_users/create', to: 'beta_users#create'
   get '/world-statistics', to: 'world_data#statistics'
 
   namespace :users do

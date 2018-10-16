@@ -69,7 +69,7 @@ class FeedbacksController < ApplicationController
     
     if @feedback.save
 			set_receiver(@feedback.receiver)
-      redirect_to "/signup_opp" 
+      redirect_to controller: 'beta_users', action: 'new'
     else
       render :new 
     end

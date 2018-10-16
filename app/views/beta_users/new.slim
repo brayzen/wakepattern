@@ -1,0 +1,21 @@
+.container
+  - if !@receiver 
+    - first_name = 'them' 
+  - else 
+    - first_name = @receiver["first_name"]
+
+  h2 Thank you for leaving #{first_name} feedback!  Your honest opinion is what delivers the true impact that changes behavior.  Thank you from us for making that contribution.
+
+  h2 Do you want to know what people think of you?
+  button YES 
+  button How does this work?>  
+
+  = form_for @beta_user, url: {action: 'create', id: :beta_user}, :html => {:class => "beta_user"} do |f|
+    .field
+      = f.text_field :first_name, autofocus: true, placeholder: 'first name'
+    .field
+      = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email'
+    .field
+      = f.text_field :phone, autofocus: true, placeholder: 'phone number'
+
+    .sign_up = f.submit "Sign up, and we'll contact you!", url: beta_users_create_path(@beta_user) 
