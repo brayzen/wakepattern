@@ -5,7 +5,9 @@
 @import 'variables';
 
 form.beta_user{
-  width: 100%;
+	max-width: 500px;
+	min-width: 400px;
+	margin: auto;
 
   input{
     width: 100%;
@@ -31,3 +33,14 @@ form.beta_user{
   }
 }
 
+.statement {
+	font-size: 2rem;
+  font-family: $primary-font;
+  margin-top: 2rem;
+	text-align: center;
+}
+
+.form-wrapper {
+	max-width: 500px;
+	min-width: 400px;
+}
