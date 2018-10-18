@@ -1,0 +1,46 @@
+// Place all the styles related to the BetaUser controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'variables';
+
+form.beta_user{
+	max-width: 500px;
+	min-width: 400px;
+	margin: auto;
+
+  input{
+    width: 100%;
+    margin: .6rem;
+    padding: .8rem;
+    background: #eef2f3;
+    font-size: 1.3rem;
+    border: none;
+    border-radius: .5rem;
+    box-sizing: border-box;
+  }
+
+  .sign_up{
+    width: 100%;
+
+    input{
+      background: $primary-blue;
+      color: white;
+      font-family: 'Gothic A1', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 1px;
+    }
+  }
+}
+
+.statement {
+	font-size: 2rem;
+  font-family: $primary-font;
+  margin-top: 2rem;
+	text-align: center;
+}
+
+.form-wrapper {
+	max-width: 500px;
+	min-width: 400px;
+}

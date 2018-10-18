@@ -73,7 +73,8 @@ class FeedbacksController < ApplicationController
     @feedback.receiver = User.new(rp) if @feedback.receiver.nil?
     
     if @feedback.save
-      redirect_to @feedback 
+			set_receiver(@feedback.receiver)
+      redirect_to controller: 'beta_users', action: 'new'
     else
       render :new 
     end

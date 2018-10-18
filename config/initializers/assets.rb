@@ -22,4 +22,5 @@ Rails.application.config.assets.precompile += %w(
   devise/session.css
   context.css
   context.js
+	beta_user.css
 )
