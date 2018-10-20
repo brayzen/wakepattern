@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   end
 
   # last before root
-  get "(:handle)", to: 'static#home', as: :root_handle
+  get "(:handle(/:context))", to: 'static#home', as: :root_handle
   root 'static#home'
 end
 
