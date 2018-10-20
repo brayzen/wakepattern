@@ -44,8 +44,8 @@ class FeedbacksController < ApplicationController
       else
         @context = @user.contexts.find_by(handle: context)
       end
-
-      @feedback.responses = @context.questions.map{ |q| q.responses.new feedback: @feedback }
+      questions = @context.questions_users.where(deleted: [nil, false]).to_a.map { |qu| qu.question }.compact
+      @feedback.responses = questions.map{ |q| q.responses.new feedback: @feedback }
     end
   end
 
