@@ -18,22 +18,21 @@
           = r.text_field(:email, placeholder: 'Or Email',
           class: 'receiver_email')
 
-  = f.text_area :message, class: 'message', placeholder: 'What would you like to say?'
-
-  - if f.object.receiver.persisted?
-    / - f.object.receiver.questions.each{|q|q.responses.new}
-    = f.fields_for :responses do |rf|
-      .question
-        = rf.hidden_field :question_id
-        p = rf.object.question.text
-        = rf.text_area :response, class: 'response'
 
   ul.traits
     - f.object.all_traits
     = f.fields_for :feedback_traits do |trait_form|
       = render 'feedbacks/trait_form', form: trait_form
 
+  = f.text_area :message, class: 'message', placeholder: 'What would you like to say?'
+
+  - if f.object.receiver.persisted?
+    - f.object.receiver.questions.each{|q|q.responses.new}
+    = f.fields_for :responses do |rf|
+      .question
+        = rf.hidden_field :question_id
+        p = rf.object.question.text
+        = rf.text_area :response, class: 'response'
+
   = f.submit 'Let them know how you feel'
-
-
 

@@ -26,17 +26,19 @@ namespace :seed do
     p 'seeding traits'
     # hard set the id for consistency
     traits = Trait.create([
-      { id: 1,  name: 'helpful',       order: 1,  indent: 0 },
-      { id: 2,  name: 'dependable',    order: 2,  indent: 1 },
-      { id: 3,  name: 'productive',    order: 3,  indent: 1 },
-      { id: 4,  name: 'communication', order: 4,  indent: 0 },
-      { id: 5,  name: 'listening',     order: 5,  indent: 1 },
-      { id: 6,  name: 'speech',        order: 6,  indent: 1 },
-      { id: 7,  name: 'understanding', order: 7,  indent: 1 },
-      { id: 8,  name: 'charisma',      order: 8,  indent: 0 },
-      { id: 9,  name: 'friendliness',  order: 9,  indent: 1 },
-      { id: 10, name: 'composure',     order: 10, indent: 1 },
-      { id: 11, name: 'complainer',    order: 11, indent: 1 }
+      { id: 1,  name: 'communication', order: 1,  indent: 0 },
+      { id: 2,  name: 'listening',     order: 2,  indent: 1 },
+      { id: 3,  name: 'speaking',      order: 3,  indent: 1 },
+      { id: 4,  name: 'character',     order: 4,  indent: 0 },
+      { id: 5,  name: 'authenticity',  order: 5,  indent: 1 },
+      { id: 6,  name: 'intention',     order: 6,  indent: 1 },
+      { id: 7,  name: 'productive',    order: 7,  indent: 0 },
+      { id: 8,  name: 'responsible',   order: 8,  indent: 1 },
+      { id: 9,  name: 'dependable',    order: 9,  indent: 1 },
+      { id: 10, name: 'effective',     order: 10, indent: 1 },
+      { id: 11, name: 'likability',    order: 11, indent: 0 },
+      { id: 12, name: 'compassion',    order: 12, indent: 1 },
+      { id: 13, name: 'composure',     order: 13, indent: 1 },
     ])
   end
 
