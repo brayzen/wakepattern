@@ -11,6 +11,7 @@ class @FeedbackTraits
       $(@).find('.star').removeClass 'selected'
       $(@).find(".rating_stars .star:nth-child(-n + #{index})").addClass 'selected'
       $(@).find("input.input_rating").val index
+      $(@).find("input.input_rating").val index
 
   stars_hover_handler: ->
     @elem.find('.trait .rating_stars').on 'mouseover', '.star', (e)->

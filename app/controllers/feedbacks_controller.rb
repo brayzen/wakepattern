@@ -46,12 +46,6 @@ class FeedbacksController < ApplicationController
       end
       questions = @context.questions_users.where(deleted: [nil, false]).to_a.map { |qu| qu.question }.compact
       @feedback.responses = questions.map{ |q| q.responses.new feedback: @feedback }
-			@feedback.traits_responses = Trait.all.map do |t| 
-				puts '50i**************************************************i'
-				puts t.to_yaml
-				t.responses feedback: @feedback
-				puts '50i**************************************************i'
-			end
     end
   end
 
@@ -105,6 +99,6 @@ class FeedbacksController < ApplicationController
     end
 
     def feedback_params
-      params.require(:feedback).permit(:message, feedback_traits_attributes: [:trait_id, :rating], receiver_attributes: [:id, :email, :handle], trait_responses_attributes: [:trait_id, :response], responses_attributes: [:question_id, :response])
+      params.require(:feedback).permit(:message, feedback_traits_attributes: [:trait_id, :rating, :response], receiver_attributes: [:id, :email, :handle], responses_attributes: [:question_id, :response])
     end
 end

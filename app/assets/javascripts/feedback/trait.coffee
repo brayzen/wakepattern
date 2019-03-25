@@ -1,4 +1,4 @@
-Vue.component 'trait',
+Vue.component 'rait',
   props: ['trait']
   template: """
     <div class="trait" index='trait.indent'>
@@ -14,6 +14,11 @@ Vue.component 'trait',
         >
         </star>
       </div>
+			<div class='trait_response'>
+				<textarea>
+					Why so?
+				</textarea>
+			</div>
     </div>
   """
 

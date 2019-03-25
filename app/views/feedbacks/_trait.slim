@@ -2,6 +2,8 @@ li.trait data-name=trait['name']
   .name = trait['name'].capitalize
   .rating_stars
     = render partial: 'feedbacks/star', collection: Array.new(5).fill('star')
+  .trait_response
+    = text_area_tag 'response-#{trait['name']}', 'Why so?', rows: 2, cols: 25
 
 - if trait['subtraits']
   ul.subtraits
