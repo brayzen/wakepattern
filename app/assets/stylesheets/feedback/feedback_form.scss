@@ -49,15 +49,17 @@
   .trait_response {
     display: none;
 		margin-top: .2rem;
-		border: solid 2px $primary-blue;
+		margin-left: 1.1em;
+		border: solid 1px $primary-blue;
 		border-radius: 4px;
-		width: 100%;
+		max-width: 50%;
+		min-width: 292px;
 	}
 
   textarea.message{
     width: 100%;
     min-height: 12rem;
-    border: solid 3px $primary-blue;
+    border: solid 1px $primary-blue;
     border-radius: 4px;
   }
 
@@ -71,7 +73,7 @@
 
     .response{
       margin-top: .2rem;
-      border: solid 3px $primary-blue;
+      border: solid 1px $primary-blue;
       border-radius: 4px;
       width: 100%;
     }
