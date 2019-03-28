@@ -8,17 +8,10 @@
   - else 
     - first_name = @receiver["first_name"]
 
-  .statement Thank you for leaving #{first_name} feedback!  Your honest opinion is what delivers the true impact that makes the difference. Thank for your contribution.
+  .statement Thank you for leaving #{first_name} feedback!  Your honest opinion is what delivers the true impact that makes the difference. Thank you for your contribution.
 
 
-  .statement Do you want to know what people think of you?
+  .statement Do you want to get to the source of your effectiveness?
+  .statement Want know what people really think of your leadership?
 
-  = form_for @beta_user, url: {action: 'create', id: :beta_user}, :html => {:class => "beta_user"} do |f|
-    .field
-      = f.text_field :first_name, autofocus: true, placeholder: 'First name'
-    .field
-      = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email'
-    .field
-      = f.text_field :phone, autofocus: true, placeholder: 'Phone number'
-
-    .sign_up = f.submit "Sign up, and we'll contact you!", url: beta_users_create_path(@beta_user) 
+  button = link_to "Sign up", new_user_registration_path, class: 'sign_up' 
