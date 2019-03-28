@@ -99,6 +99,6 @@ class FeedbacksController < ApplicationController
     end
 
     def feedback_params
-      params.require(:feedback).permit(:message, feedback_traits_attributes: [:trait_id, :rating], receiver_attributes: [:id, :email, :handle], responses_attributes: [:question_id, :response])
+      params.require(:feedback).permit(:message, feedback_traits_attributes: [:trait_id, :rating, :response], receiver_attributes: [:id, :email, :handle], responses_attributes: [:question_id, :response])
     end
 end

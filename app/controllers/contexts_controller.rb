@@ -3,7 +3,8 @@ class ContextsController < ApplicationController
   
   def create
     @context = current_user.contexts.build(context_params)
-    @context.handle = @context.name[0] + @context.name[-1]
+		#if we want to abbreviate context
+    #@context.handle = @context.name[0] + @context.name[-1]
     check_default(@context, context_params)
     if @context.save
       save_questions(questions_params)
