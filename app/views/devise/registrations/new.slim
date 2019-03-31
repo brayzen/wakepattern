@@ -1,15 +1,17 @@
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = devise_error_messages!
-  .field
-    = f.text_field :handle, autofocus: true, placeholder: 'Handle'
-  .field
-    = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email'
-  .field
-    = f.password_field :password, autocomplete: "off", placeholder: 'Password'
-  .field
-    = f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Password confirmation'
+.container
+ .center 
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = devise_error_messages!
+      .field
+        = f.text_field :handle, autofocus: true, placeholder: 'Handle / Username'
+      .field
+        = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email'
+      .field
+        = f.password_field :password, autocomplete: "off", placeholder: 'Password'
+      .field
+        = f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Password confirmation'
 
-  / .tag_line By clicking Sign up, I agree to the Terms of Service and Privacy Policy
+      / .tag_line By clicking Sign up, I agree to the Terms of Service and Privacy Policy
 
-  .sign_up = f.submit "Sign up for free"
+      .sign_up = f.submit "Sign up to get and give Feedback"
 

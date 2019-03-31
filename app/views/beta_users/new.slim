@@ -2,16 +2,16 @@
 .flash
   - if flash[:notice]
     = flash[:notice]
-.container
+.container-column
   - if !@receiver 
     - first_name = 'them' 
   - else 
     - first_name = @receiver["first_name"]
+  .center
+    .statement Thank you for leaving #{first_name} feedback!  Your honest opinion is what delivers the true impact that makes the difference. Thank you for your contribution.
 
-  .statement Thank you for leaving #{first_name} feedback!  Your honest opinion is what delivers the true impact that makes the difference. Thank you for your contribution.
 
+    .statement Do you want to get to the source of your effectiveness?
+    .statement Want know what people really think of your leadership?
 
-  .statement Do you want to get to the source of your effectiveness?
-  .statement Want know what people really think of your leadership?
-
-  button = link_to "Sign up", new_user_registration_path, class: 'sign_up' 
+  = render template: 'devise/registrations/new'
