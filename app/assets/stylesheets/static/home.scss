@@ -112,3 +112,16 @@ form.new_user{
   }
 }
 
+button#how-it-works{
+	background-color: $primary-blue;
+	font-family: inherit;
+	color: #FFF;
+	font-size: 2em;
+	width: 200px;
+	margin: auto;
+}
+
+.how-it-works {
+	display: none
+}
+

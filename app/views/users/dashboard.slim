@@ -1,31 +1,25 @@
-ul class=(["nav", "nav-tabs", "contexts"])
+// This was the contexts we used to have.  It lists all a users contexts here, allowed you to create a context
+//ul class=(["nav", "nav-tabs", "contexts"])
   = render partial: 'users/context', collection: @contexts, locals: { active: @context.handle }
   li class=(["nav-item"])
     = link_to "+", "/dashboard/new", class: "nav-link context-tab" + (@context.handle.nil? ? " active" : "")
 
-.context
-  - @context.errors.messages.each do |message|
-    = message
-  - if !@context.id.nil?
-    .alert.alert-primary
-      h3 Context URL: #{@url} 
-  h2 What context would you like to ask questions about?
-  .context-form
-    = form_for @context do |f|
-      = f.hidden_field :id
-      = f.hidden_field :handle
-      = f.text_field :name, class: 'question-text'
-      .default
-        = f.check_box :default
-        = f.label 'Default Context'
-      .questions
-        h2 Questions
-        = f.fields_for :questions, @questions do |q|
-          .question
-            = q.hidden_field :id
-            = q.text_field :text, placeholder: "Question", class: "question-text", disabled: (!q.object.id.nil?)
-            = link_to 'delete', question_path(@context.questions_users.find_by(question_id: q.object.id)), method: :delete, class: 'button delete', data: { confirm: "Are you sure you want to delete this question?" } if !q.object.id.nil?
-    
-      = f.submit "save", class: 'btn btn-primary'
-      = link_to 'delete', context_path(@context.id), method: :delete, class: 'btn btn-danger', data: { confirm: "Are you sure you want to delete your #{@context.name} context?"} if !@context.id.nil?
-/= render 'traits/trait_averages'
+.container-column
+  .context.center
+    - @context.errors.messages.each do |message|
+      = message
+
+    h2 What context would you like to ask questions about?
+    .context-form
+      = form_for @context do |f|
+        .questions
+          h2 Questions
+          = f.fields_for :questions, @questions do |q|
+            .question
+              = q.hidden_field :id
+              = q.text_field :text, placeholder: "Question", class: "question-text", disabled: (!q.object.id.nil?)
+              = link_to 'delete', question_path(@context.questions_users.find_by(question_id: q.object.id)), method: :delete, class: 'button delete', data: { confirm: "Are you sure you want to delete this question?" } if !q.object.id.nil?
+      
+        = f.submit "save", class: 'btn btn-primary'
+        = link_to 'delete', context_path(@context.id), method: :delete, class: 'btn btn-danger', data: { confirm: "Are you sure you want to delete your #{@context.name} context?"} if !@context.id.nil?
+  /= render 'traits/trait_averages'
