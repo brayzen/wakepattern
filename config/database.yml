@@ -5,8 +5,8 @@ default: &default
 
 development:
   <<: *default
-  host: db
-  username: postgres
+  host: localhost 
+  username: brianray  
   password:
   database: myapp_development
 

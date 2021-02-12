@@ -1,0 +1,32 @@
+
+dating:
+  - How well do they Listen? (1-5)
+  - How well do they Connect with you? (1-5)
+  - Please rank your Physical Attraction to them? (1-5)
+  - How Interesting are they? (1-5)
+  - How well do your goals line up? (1-5)
+  - Anything you're worried about? (1-5)
+
+work-colleagues:
+  - How well do they Listen? (1-5)
+  - How dependable are they? (1-5)
+  - How Authentic do they occur to you? (1-5)
+  - What are their Stengths?
+  - What are their Weaknesses?
+  - What is like working with them?
+
+work-clients:
+  - How Trustworthy do they occur do you? (1-5)
+  - How Authentic do they occur to you? (1-5)
+  - How well do they Listen? (1-5)
+  - How Professional do they seem? (1-5)
+  - How Engaging are they? (1-5)
+  - Please rank your desire to work with them (1-5)
+
+work-interviews:
+  - How well did they present themselves? (1=5)
+  - How well did you relate to them? (1-5)
+  - How Authentic did they occur to you? (1-5)
+  - How well did they Listen? (1-5)
+  - Please rank your desire to work with them (1-5)
+  - The reason they wouldn't get the job is because _____?
